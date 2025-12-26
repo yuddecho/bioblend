@@ -24,13 +24,13 @@ class History:
         # 创建一个新的历史记录，并设为当前历史记录
         new_history = self.ctx.gi.histories.create_history(name=name)
         self.ctx.history_id = new_history['id']
-        print(f"[History] create {self.ctx.history_id}:{new_history['name']}")
+        print(f"[History] create {self.ctx.history_id}: {new_history['name']}")
 
     def select(self, history_id: str):
         # 选择一个历史记录作为当前历史记录
         self.ctx.history_id = history_id
         history_name = self.ctx.gi.histories.show_history(history_id, contents=False)['name']
-        print(f"[History] select {self.ctx.history_id}:{history_name}")
+        print(f"[History] select {self.ctx.history_id}: {history_name}")
     
     def open(self):
         # 打开web, 并选择当前历史记录
@@ -47,6 +47,10 @@ class History:
             self.ctx.history_id = self.ctx.gi.histories.get_most_recently_used_history()['id']
 
         self.ctx.gi.histories.delete_history(history_id, purge=purge)
+
+        print(f"[History] delete {history_id}: {self.ctx.gi.histories.show_history(history_id, contents=False)['name']}")
+        
+        print(f'[History] now {self.ctx.history_id}: {self.ctx.gi.histories.show_history(self.ctx.history_id, contents=False)['name']}')
 
     def info(self):
         # 打印所有历史记录信息
@@ -221,7 +225,7 @@ class Workflow:
             self.workflow_id = workflows[0]['id']
             self.workflow_content = self.ctx.gi.workflows.show_workflow(self.workflow_id)
 
-            print(f"[Workflow] now {self.workflow_id}:{self.workflow_content['name']}")
+            print(f"[Workflow] now {self.workflow_id}: {self.workflow_content['name']}")
 
             for w in workflows:
                 self.workflow_id_dict.append(w['id'])
@@ -245,7 +249,7 @@ class Workflow:
         self.workflow_id = workflow_id
         self.workflow_content = self.ctx.gi.workflows.show_workflow(self.workflow_id)
 
-        print(f"[Workflow] select {self.workflow_id}:{self.workflow_content['name']}")
+        print(f"[Workflow] select {self.workflow_id}: {self.workflow_content['name']}")
 
     def content(self):
         return self.workflow_content
@@ -256,7 +260,7 @@ class Workflow:
         with open(file_path, 'w', encoding='utf-8') as f:
             json.dump(workflow_json, f, ensure_ascii=False, indent=4)
 
-        print(f"[Workflow] export {self.workflow_id}:{self.workflow_content['name']} to {file_path}")
+        print(f"[Workflow] export {self.workflow_id}: {self.workflow_content['name']} to {file_path}")
     
     def load(self, file_path: str):
         if not os.path.exists(file_path):
@@ -270,7 +274,7 @@ class Workflow:
         self.workflow_id = res['id']
         self.workflow_content = self.ctx.gi.workflows.show_workflow(self.workflow_id)
 
-        print(f"[Workflow] load {self.workflow_id}:{self.workflow_content['name']}")
+        print(f"[Workflow] load {self.workflow_id}: {self.workflow_content['name']}")
 
 
     def run(self, inputs: dict) -> dict:
@@ -283,7 +287,7 @@ class TransMolecule:
     def __init__(self, url, key):
         gi = self.login(url, key)
         history = gi.histories.get_most_recently_used_history()
-        print(f"[History] now {history['id']}:{history['name']}")
+        print(f"[History] now {history['id']}: {history['name']}")
 
         self.ctx = GalaxyCtx(gi, history['id'])
         self.history = History(self.ctx)
