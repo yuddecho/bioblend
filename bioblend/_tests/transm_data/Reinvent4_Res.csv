@@ -1,0 +1,12 @@
+SMILES,Scaffold,R-groups,NLL
+CC(=O)OCc1cc(=O)[nH]c([N+](N)=O)c1NN,CC(=O)[*],O=[N+](c1c(NN)c(CO*)cc(=O)[nH]1)N,26.17
+Cc1cccc(OCc2ccccc2CCNC(=O)CSc2noc(=O)[nH]2)c1CNC(=O)c1ccccc1-c1nn[nH]c1-c1ccccc1,c1cc([*])ccc1,c1(*)c(-c2ccccc2C(NCc2c(C)cccc2OCc2ccccc2CCNC(=O)CSc2[nH]c(=O)on2)=O)nn[nH]1,55.71
+CC(=O)N1CCc2c(cccc2C(=O)O)C1,CC(=O)[*],c1ccc2c(c1C(O)=O)CCN(*)C2,18.27
+N#CC(=CC(=O)O)Cc1ccccc1,c1cc([*])ccc1,C(C(O)=O)=C(C#N)C*,17.11
+CC(=O)Nc1cccc(CCN)c1,CC(=O)[*],NCCc1cc(N*)ccc1,17.42
+CC(=O)NNC(=S)N=CN=Cc1c(Cl)cc(F)c(F)c1F,CC(=O)[*],C(NN*)(N=CN=Cc1c(Cl)cc(F)c(F)c1F)=S,31.2
+O=C1CN(CCC2CCN(CC3CN=C(Cc4ccccc4)N3)CC2)S(=O)(=O)N1,c1cc([*])ccc1,C1N=C(C*)NC1CN1CCC(CCN2S(=O)(=O)NC(=O)C2)CC1,31.26
+COc1ccc2[nH]c(=O)cc(NC(C)=O)c2c1,CC(=O)[*],c1cc(OC)cc2c(N*)cc(=O)[nH]c12,15.84
+COC(=O)CCC(=O)Nc1ccc(C#N)c(NC(=O)Nc2ccc(CN(C)C(C)=O)cc2-c2noc(C)n2)c1,CC(=O)[*],N(c1c(-c2nc(C)on2)cc(CN(*)C)cc1)C(=O)Nc1cc(NC(CCC(OC)=O)=O)ccc1C#N,49.17
+COc1cc(OC)c(Br)c(C(=O)NNC(C)=O)c1,CC(=O)[*],c1c(C(NN*)=O)c(Br)c(OC)cc1OC,19.62
+Cc1cc(Nc2cccc(Oc3ccccc3)c2)c(C(=O)NCCc2ccccc2)c(=O)[nH]1,c1cc([*])ccc1,[nH]1c(=O)c(C(NCC*)=O)c(Nc2cc(Oc3ccccc3)ccc2)cc1C,28.97
