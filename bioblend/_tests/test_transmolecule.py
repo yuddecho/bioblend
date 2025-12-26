@@ -186,7 +186,7 @@ class TestTransMolecule(unittest.TestCase):
         # 构建输入，将上传的文件数据的id放到对应value
         tool_input = input_exampels
 
-        tool_input['receptor']['id'] = self.data['recptor.pdb'][0]['id']
+        tool_input['receptor']['id'] = self.data['receptor.pdb'][0]['id']
         tool_input['reference_ligand']['id'] = self.data['ligand.sdf'][0]['id']
 
         data = ['RAIEQIIQPDI.sdf', 'ZXWUGWV.sdf', 'T608.sdf']
@@ -213,7 +213,7 @@ class TestTransMolecule(unittest.TestCase):
         # 构建输入，将上传的文件数据的id放到对应value
         tool_input = input_exampels
 
-        tool_input['receptor']['id'] = self.data['recptor.pdb'][0]['id']
+        tool_input['receptor']['id'] = self.data['receptor.pdb'][0]['id']
 
         data = ['RAIEQIIQPDI.sdf', 'ZXWUGWV.sdf', 'T608.sdf']
         tool_input['options|sdf'] = [{'id': self.data[data_name][0]['id'], 'src': 'hda'} for data_name in data]
@@ -239,7 +239,7 @@ class TestTransMolecule(unittest.TestCase):
         # 构建输入，将上传的文件数据的id放到对应value
         tool_input = input_exampels
 
-        tool_input['receptor']['id'] = self.data['recptor.pdb'][0]['id']
+        tool_input['receptor']['id'] = self.data['receptor.pdb'][0]['id']
 
         print(f'tool_input: {tool_input}')
 
@@ -332,7 +332,7 @@ class TestTransMolecule(unittest.TestCase):
         # 构建输入，将上传的文件数据的id放到对应value
         tool_input = input_exampels
 
-        tool_input['pdb_file']['id'] = self.data['recptor.pdb'][0]['id']
+        tool_input['pdb_file']['id'] = self.data['receptor.pdb'][0]['id']
         tool_input['sdf_file']['id'] = self.data['ligand.sdf'][0]['id']
 
         print(f'tool_input: {tool_input}')
