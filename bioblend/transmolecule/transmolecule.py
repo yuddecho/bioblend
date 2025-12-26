@@ -6,6 +6,10 @@ import json
 from bioblend.galaxy import GalaxyInstance
 from dataclasses import dataclass
 
+import importlib.resources as res  # Py3.9+
+
+# 一次性把 tools 目录当成“资源目录”
+_TOOLS = res.files(__package__) / "tools"
 
 @dataclass
 class GalaxyCtx:
@@ -197,7 +201,7 @@ class Tool:
             
             tool_id = _tool_id
         
-        tool_path = f"tools/{tool_id}.yaml"
+        tool_path = f"{_TOOLS}/{tool_id}.yaml"
         if not os.path.exists(tool_path):
             raise ValueError(f"tool_id {tool_id}.yaml not found, please check tool id in tool panel: {self.tool_dict}")
         
