@@ -1,0 +1,65 @@
+id: dbsearch
+name: DBSearch
+version: 1.0
+description: search small molecule database
+inputs:
+  - id: json_file
+    type: data
+    name: Pharmacophore JSON file
+    optional: false
+    value: null
+    extensions:
+      - json
+    multiple: false
+    src: hda
+    help: null
+    
+  - id: db
+    type: conditional
+    name: Select small molecules database
+    optional: false
+    case_id: name
+    cases:
+      - value: local_db
+        inputs:
+          - id: local_db_name
+            type: select
+            name: Select local small molecules database
+            optional: false
+            value: TopScience_Zinc_ChemDiv
+            options:
+              - [TopScience_Zinc_ChemDiv, TopScience_Zinc_ChemDiv, false]
+              - [TopScienceDB, TopScienceDB, false]
+              - [Zinc, Zinc, false]
+              - [ChemDiv, ChemDiv, false]
+      - value: custom_db
+        inputs:
+          - id: custom_db_name
+            type: text
+            name: DB name
+            optional: false
+            value: null
+            help: directory of small molecules database
+
+  - id: pharma_num
+    type: text
+    name: Min pharma number
+    optional: true
+    value: 4
+    help: minimum number of pharmacophore groups for search >= 3
+    area: false
+
+input_exampels: "{'json_file': {'id': None, 'src': 'hda'}, 'db|name': 'local_db', 'db|local_db_name': 'TopScience_Zinc_ChemDiv', 'pharma_num': '4'}"
+
+outputs:
+  - id: null
+    hid: null
+    name: DBSearch Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+  - id: null
+    hid: null
+    name: DBSearch Res(txt)
+    example: "output_id = res['output_collections'][0]['id']"

@@ -1,0 +1,36 @@
+id: pharma
+name: Pharma
+version: 1.0
+description: generate pharmacophore
+inputs:
+  - id: pdb_file
+    type: data
+    name: Receptor(pdb)
+    optional: false
+    extensions: 
+      - pdb
+    multiple: false
+    src: hda
+    help: null
+
+  - id: sdf_file
+    type: data
+    name: Ligand(sdf)
+    optional: false
+    extensions: 
+      - sdf
+    multiple: false
+    src: hda
+    help: null
+
+input_exampels: "{'pdb_file': {'id': None, 'src': 'hda'}, 'sdf_file': {'id': None, 'src': 'hda'}}"
+
+outputs:
+  - id: null
+    hid: null
+    name: Pharma Res(json)
+    file_ext: json
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections: null
+  

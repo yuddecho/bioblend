@@ -77,4 +77,5 @@ version = { attr = "bioblend.__version__" }
 "bioblend" = [
     "_tests/data/*",
     "py.typed",
+    "transmolecule/tools/*",
 ]

@@ -1,0 +1,67 @@
+id: admet_ai
+name: ADMET-AI
+version: 1.0
+description: null
+inputs:
+  - id: sdf_files
+    name: SDF file
+    type: data
+    multiple: true
+    extensions:
+      - sdf
+    help: SDF file with molecules
+    optional: false
+
+  - id: cond
+    name: Run top objects
+    type: conditional
+    case_id: sele
+    cases:
+      - value: yes
+        inputs:
+          - id: input_csv
+            name: CSV
+            type: data
+            multiple: false
+            extensions:
+              - csv
+            help: null
+            optional: true
+          - id: column_name
+            name: Column name
+            type: text
+            help: CNN_affinity or minimized_Affinity
+            optional: true
+            value: CNN_affinity
+          - id: top_n
+            name: Top n
+            type: text
+            help: null
+            optional: true
+            value: 10
+          - id: sort_order
+            name: Sort Order
+            type: select
+            options:
+              - [descending, desc, false]
+              - [ascending, asc, false]
+            help: null
+            optional: true
+            value: desc
+            
+      - value: no
+
+input_exampels: "{'Yes': {'sdf_files': {'id': None,'src': 'hdca'}, 'cond|sele': 'yes', 'cond|input_csv': {'id': None,'src': 'hda'}, 'cond|column_name': 'CNN_affinity', 'cond|top_n': '2', 'cond|sort_order': 'desc'}, 'No': {'sdf_files': [{'id': '1961385d27543132', 'src': 'hda'}, {'id': 'cc40854ffff960fb', 'src': 'hda'}], 'cond|sele': 'no'}}"
+
+outputs:
+  - id: null
+    hid: null
+    name: ADMET-AI Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+  - id: null
+    hid: null
+    name: ADMET-AI Res(pdf)
+    example: "output_id = res['output_collections'][0]['id']"

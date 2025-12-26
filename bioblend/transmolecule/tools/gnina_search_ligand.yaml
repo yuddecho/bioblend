@@ -1,0 +1,34 @@
+id: gnina_search_ligand
+name: Gnina Search Ligand
+version: 1.0
+description: 
+inputs:
+  - id: receptor
+    name: Receptor
+    type: data
+    multiple: false
+    help: PDB file of the receptor
+    optional: false
+    
+  - id: workers
+    name: Workers
+    type: text
+    multiple: false
+    help: null
+    optional: true
+    value: 8
+
+input_exampels: "{'receptor': {'id': None,'src': 'hda'}, 'workers': '8'}"
+
+outputs:
+  - id: null
+    hid: null
+    name: Gnina Search Ligand Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+  - id: null
+    hid: null
+    name: Gnina Search Ligand Res(sdf)
+    example: "output_id = res['output_collections'][0]['id']"

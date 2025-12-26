@@ -1,0 +1,47 @@
+id: build_db
+name: BuildDB
+version: 1.0
+description: build a database for pharmacophore
+inputs:
+  - id: db_name
+    type: text
+    name: Custom database name
+    optional: false
+    value: null
+    help: english strings, which cannot contain special characters and spaces
+    area: false
+    
+  - id: ligand_zip_file
+    type: data
+    name: Ligand(zip)
+    optional: false
+    value: null
+    extensions: 
+      - zip
+    multiple: false
+    src: hda
+    help: null
+    
+  - id: m_db_name
+    type: select
+    label: Select small molecules database
+    help: select the corresponding dataset and a new database will be created together (it will take time)
+    multiple: false
+    optional: true
+    options:
+      - [None, "", true]
+      - [TopScienceDB, TopScienceDB_H_3D, false]
+      - [Zinc, Zinc_Million_Clean_SASA_H, false]
+      - [ChemDiv, ChemDiv_SASA_3D, false]
+      - [TopScience_Zinc_ChemDiv, TopScience_Zinc_ChemDiv, false]
+
+input_exampels: "{'db_name': 'KK', 'ligand_zip_file': {'id': None, 'src': 'hda'}, 'm_db_name': ''}"
+
+outputs:
+  - id: null
+    hid: null
+    name: BuildDB Res(txt)
+    file_ext: txt
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections: null

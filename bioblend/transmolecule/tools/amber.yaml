@@ -1,0 +1,120 @@
+id: amber
+name: AmberTools
+version: 1.0
+description: null
+inputs:
+  - id: receptor
+    name: Receptor(PDB)
+    type: data
+    multiple: false
+    extensions:
+      - pdb
+    help: PDB file of the receptor
+    optional: false
+
+  - id: ligand
+    name: Ligand(PDB)
+    type: data
+    multiple: false
+    extensions:
+      - pdb
+    help: SDF file of the reference ligand
+    optional: true
+
+  - id: heat1_tempi
+    name: Heat1 Temperature Initial
+    type: text
+    help: null
+    optional: true
+    value: 0
+
+  - id: heat1_temp0
+    name: Heat1 Temperature Final
+    type: text
+    help: null
+    optional: true
+    value: 310
+
+  - id: equ_tempi
+    name: Equilibration Temperature Initial
+    type: text
+    help: null
+    optional: true
+    value: 310
+
+  - id: equ_temp0
+    name: Equilibration Temperature Final
+    type: text
+    help: null
+    optional: true
+    value: 310
+
+  - id: md_tempi
+    name: MD Temperature Initial
+    type: text
+    help: null
+    optional: true
+    value: 310
+
+  - id: md_temp0
+    name: MD Temperature Final
+    type: text
+    help: null
+    optional: true
+    value: 310
+
+  - id: heat1_time
+    name: Heat1 Time (ns), default nstlim 25,000
+    type: text
+    help: null
+    optional: true
+    value: 05
+
+  - id: equ_time
+    name: Equilibration Time (ns), default nstlim 500,000
+    type: text
+    help: null
+    optional: true
+    value: 10
+
+  - id: md_time
+    name: MD Time (ns), default nstlim 5,000,000
+    type: text
+    help: null
+    optional: true
+    value: 005
+
+  - id: options
+    name: options
+    type: conditional
+    case_id: set_m
+    cases:
+      - value: fa
+        inputs:
+          - id: fa
+            name: Reference Protein FASTA file
+            type: data
+            multiple: false
+            extensions:
+              - fasta
+            help: null
+            optional: false
+      - value: va
+        inputs:
+          - id: va
+            name: Value of -m
+            type: text
+            help: null
+            optional: false
+            value: 1-30
+
+input_exampels: "{'receptor': {'id': None, 'src': 'hda'}, 'ligand': {'id': None, 'src': 'hda'}, 'heat1_tempi': '0', 'heat1_temp0': '310', 'equ_tempi': '310', 'equ_temp0': '310', 'md_tempi': '310', 'md_temp0': '310', 'heat1_time': '05', 'equ_time': '10', 'md_time': '005', 'options|set_m': 'va', 'options|va': '1-30'}"
+
+outputs:
+  - id: null
+    his: null
+    name: Amber Res(txt)
+    file_ext: txt
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections: null

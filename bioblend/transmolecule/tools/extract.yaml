@@ -1,0 +1,53 @@
+id: extract
+name: Extract
+version: 1.0
+description: null
+inputs:
+  - id: mol_file
+    type: data
+    name: Small molecule file
+    optional: false
+    value: null
+    extensions:
+      - txt
+    multiple: false
+    src: hda
+    help: null
+
+  - id: db
+    type: conditional
+    name: Select small molecules database
+    optional: false
+    value: null
+    case_id: name
+    cases:
+      - value: local_db
+        inputs:
+          - id: local_db_name
+            type: select
+            name: Select local small molecules database
+            optional: false
+            value: TopScience_Zinc_ChemDiv
+            options:
+              - [TopScience_Zinc_ChemDiv, TopScience_Zinc_ChemDiv, false]
+              - [TopScienceDB, TopScienceDB, false]
+              - [Zinc, Zinc, false]
+              - [ChemDiv, ChemDiv, false]
+      - value: custom_db
+        inputs:
+          - id: custom_db_name
+            type: text
+            name: DB name
+            optional: false
+            value: null
+            help: directory of small molecules database
+
+input_exampels: "{'mol_file': {'id': None, 'src': 'hda'}, 'db|name': 'local_db', 'db|local_db_name': 'TopScience_Zinc_ChemDiv'}"
+
+outputs: null
+
+output_collections:
+  - id: null
+    hid: null
+    name: Extract Res(sdf)
+    example: "output_id = res['output_collections'][0]['id']"

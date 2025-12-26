@@ -1,0 +1,43 @@
+id: table_sort
+name: Table Sort
+version: 1.0
+description: Sort a table by a specified column
+inputs:
+  - id: table_file
+    type: data
+    name: Table file
+    help: Table file to be sorted
+    multiple: false
+    optional: false
+    extensions:
+      - csv
+    
+  - id: sort_column
+    type: text
+    name: Sort Column
+    help: Column to sort the table by
+    multiple: false
+    optional: false
+    value: null
+    
+  - id: sort_order
+    type: select
+    name: Sort Order
+    help: null
+    multiple: false
+    optional: false
+    options:
+      - [descending, descending, false]
+      - [ascending, ascending, false]
+    value: descending
+
+input_exampels: "{'table_file': {'id': None,'src': 'hda'}, 'sort_column': '', 'sort_order': 'descending'}"
+
+outputs:
+  - id: null
+    hid: null
+    name: Table Sort Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections: null
