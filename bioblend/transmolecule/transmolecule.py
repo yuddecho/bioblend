@@ -50,7 +50,7 @@ class History:
 
         print(f"[History] delete {history_id}: {self.ctx.gi.histories.show_history(history_id, contents=False)['name']}")
         
-        print(f'[History] now {self.ctx.history_id}: {self.ctx.gi.histories.show_history(self.ctx.history_id, contents=False)['name']}')
+        print(f"[History] now {self.ctx.history_id}: {self.ctx.gi.histories.show_history(self.ctx.history_id, contents=False)['name']}")
 
     def info(self):
         # 打印所有历史记录信息
