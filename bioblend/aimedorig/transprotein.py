@@ -22,7 +22,7 @@ class Tool(BaseTool):
 
         return {'jobs': jobs, 'outputs': outputs, 'output_collections': output_collections}
     
-class TransMolecule:
+class TransProtein:
     def __init__(self, url, key):
         gi = self.login(url, key)
         history = gi.histories.get_most_recently_used_history()
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     with open('config.yaml', 'r') as f:
         config = yaml.safe_load(f)
 
-    trans_molecule = TransMolecule(config['transprotein_url'], config['transprotein_api_key'])
+    trans_molecule = TransProtein(config['transprotein_url'], config['transprotein_api_key'])
 
     trans_molecule.history.select('2e2eb5d9fff58821')
 
