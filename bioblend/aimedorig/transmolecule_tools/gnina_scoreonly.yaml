@@ -1,0 +1,64 @@
+id: gnina_scoreonly
+name: Gnina Scoreonly
+version: 1.0
+description: null
+inputs:
+  - id: receptor
+    type: data
+    name: Receptor
+    help: PDB file of the receptor
+    optional: false
+    multiple: false
+    extensions:
+      - pdb
+    
+  - id: options
+    name: Ligand file format
+    type: conditional
+    case_id: ligand_format
+    cases:
+      - value: sdf
+        inputs:
+          - id: sdf
+            type: data
+            name: Ligands(sdf)
+            help: SDF file of the ligand
+            optional: false
+            multiple: true
+            extensions:
+              - sdf
+            
+      - value: pdb
+        inputs:
+          - id: pdb
+            type: data
+            name: Ligands(pdb)
+            help: PDB file of the ligand
+            optional: false
+            multiple: true
+            extensions:
+              - pdb
+
+
+  - id: workers
+    name: Workers
+    type: text
+    name: Workers
+    help: null
+    optional: true
+    value: 8
+
+input_exampels: "{'receptor': {'id': None,'src': 'hda'}, 'options|ligand_format': 'sdf', 'options|sdf': [{'id': None,'src': 'hda'}, {'id': None,'src': 'hda'}, {'id': None,'src': 'hda'}], 'workers': '3'}"
+
+outputs:
+  - id: null
+    hid: null
+    name: Gnina Scoreonly Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+  - id: null
+    hid: null
+    name: Gnina Scoreonly Res(sdf)
+    example: "output_id = res['output_collections'][0]['id']"

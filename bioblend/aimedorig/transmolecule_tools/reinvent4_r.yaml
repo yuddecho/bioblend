@@ -1,0 +1,43 @@
+id: reinvent4_r
+name: Reinvent4 LibInvent
+version: 1.0
+description: find R-groups for the given scaffolds
+inputs:
+  - id: smiles_content
+    name: SMILES
+    type: text
+    multiple: false
+    help: One scaffold per line Each scaffold must be annotated by 2 '*'s to locate the attachment points
+    optional: false
+    value: null
+
+  - id: num_smiles
+    name: Generated quantity
+    type: text
+    multiple: false
+    help: Number of skeletons spawned (will be deduplicated at the end)
+    optional: false
+    value: 20
+
+  - id: workers
+    name: Sim2PDB Workers
+    type: text
+    multiple: false
+    help: The higher the value, the better the novelty of spawning the skeleton
+    optional: true
+    value: 10
+
+input_exampels: "{'smiles_content': '[*:0]Cc2ccc1cncc(C[*:1])c1c2\\n[*:0]Cc2cnc1cncc(C[*:1])c1c2', 'num_smiles': '20', 'workers': '12'}"
+
+outputs:
+  - id: null
+    hid: null
+    name: Reinvent4 LibInvent Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+  - id: null
+    hid: null
+    name: Reinvent4 LibInvent Res(pdb)
+    example: "output_id = res['output_collections'][0]['id']"

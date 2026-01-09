@@ -1,0 +1,43 @@
+id: transpharmer
+name: TransPharmer
+version: 1.0
+description: 
+inputs:
+  - id: smiles_content
+    name: SMILES
+    type: text
+    multiple: false
+    help: null
+    optional: false
+    value: "O=C([C@H](Oc1cc(SC2=C(Nc3cc(F)nc(c3)F)C(=O)NC2=O)c(cc1F)F)C)N(C)C"
+
+  - id: num_smiles
+    name: Generated quantity
+    type: text
+    multiple: false
+    help: null
+    optional: false
+    value: 500
+
+  - id: workers
+    name: Sim2PDB Workers
+    type: text
+    multiple: false
+    help: null
+    optional: true
+    value: 24
+
+input_exampels: "{'smiles_content': 'O=C([C@H](Oc1cc(SC2=C(Nc3cc(F)nc(c3)F)C(=O)NC2=O)c(cc1F)F)C)N(C)C', 'num_smiles': '20', 'workers': '10'}"
+
+outputs:
+  - id: null
+    hid: null
+    name: TransPharmer Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+  - id: null
+    hid: null
+    name: TransPharmer Res(pdb)
+    example: "output_id = res['output_collections'][0]['id']"

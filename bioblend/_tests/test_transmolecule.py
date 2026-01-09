@@ -1,5 +1,5 @@
 import unittest
-from bioblend.transmolecule import TransMolecule
+from bioblend.aimedorig import TransMolecule
 import os
 
 import importlib.resources as res  # Py3.9+

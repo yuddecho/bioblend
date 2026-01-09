@@ -1,0 +1,56 @@
+id: rascore
+name: RAscore
+version: 1.0
+description: null
+inputs:
+  - id: cond
+    case_id: sele
+    type: conditional
+    name: Input Smiles Format
+    optional: false
+    value: null
+    cases:
+      - value: cond_1
+        inputs:
+          - id: smiles_content
+            type: text
+            name: SMILES
+            optional: false
+            value: null
+            help: One SMILES per line
+            area: true
+
+      - value: cond_2
+        inputs:
+          - id: file_format
+            type: select
+            name: Input File Format
+            optional: false
+            value: sdf
+            options:
+              - [sdf, sdf, true]
+              - [mols, mol2, false]
+              - [pdb, pdb, false]
+
+          - id: smiles_files
+            type: data
+            name: Input files
+            optional: false
+            value: null
+            extensions:
+              - sdf
+              - mol2
+              - pdb
+            multiple: true
+            help: null
+            
+input_exampels: "{'smiles': {'cond|sele': 'cond_1', 'cond|smiles_content': 'CC(=O)OC1=CC=CC=C1C(=O)O\\nCCn1cc(CN2CCN(CC[NH+]3C(C)CCC3C)CC2)cn1\\nCCN(CC)CC'}, 'molecule_files': {'cond|sele': 'cond_2', 'cond|file_format':'sdf', 'cond|smiles_files': [{'id': None,'src': 'hda'}, {'id': None,'src': 'hda'}, {'id': None,'src': 'hda'}]}}"
+
+outputs:
+  - id: null
+    hid: null
+    name: RAscore Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections: null

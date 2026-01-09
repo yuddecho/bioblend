@@ -1,0 +1,71 @@
+id: gnina
+name: Gnina
+version: 1.0
+description: null
+inputs:
+  - id: receptor
+    type: data
+    name: Receptor
+    help: PDB file of the receptor
+    extensions:
+      - pdb
+    multiple: false
+    optional: false
+    src: hda
+    help: null
+
+  - id: reference_ligand
+    type: data
+    name: Reference ligand
+    help: SDF file of the reference ligand
+    extensions:
+      - sdf
+    multiple: false
+    optional: false
+    src: hda
+    help: null
+
+  - id: options
+    name: Ligand file format
+    type: conditional
+    case_id: ligand_format
+    cases:
+      - value: sdf
+        inputs:
+          - id: sdf
+            type: data
+            name: Ligands(sdf)
+            help: SDF file of the ligand
+            extensions:
+              - sdf
+            multiple: true
+            optional: false
+            src: hda
+            help: null
+      - value: pdb
+        inputs:
+          - id: pdb
+            type: data
+            name: Ligands(pdb)
+            help: PDB file of the ligand
+            extensions:
+              - pdb
+            multiple: true
+            optional: false
+            src: hda
+            help: null
+
+input_exampels: "{'receptor': {'id': None,'src': 'hda'},'reference_ligand': {'id': None,'src': 'hda'}, 'options|ligand_format':'sdf', 'options|sdf': {'id': None,'src': 'hdca'}, 'workers': '8'}"
+
+outputs:
+  - id: null
+    hid: null
+    name: Gnina Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+  - id: null
+    hid: null
+    name: Gnina Res(sdf)
+    example: "output_id = res['output_collections'][0]['id']"

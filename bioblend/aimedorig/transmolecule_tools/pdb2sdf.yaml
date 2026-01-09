@@ -1,0 +1,23 @@
+id: pdb2sdf
+name: PDB2SDF
+version: 1.0
+description: convert small molecules in pdb format to sdf format
+inputs:
+  - id: pdb_files
+    type: data
+    name: PDB file
+    help: null
+    multiple: true
+    optional: false
+    extensions:
+      - pdb
+
+input_exampels: "{'pdb_files': [{'id': None,'src': 'hda'}]}"
+
+outputs: null
+
+output_collections:
+  - id: null
+    hid: null
+    name: Smiles2PDB Res(pdb)
+    example: "output_id = res['output_collections'][0]['id']"

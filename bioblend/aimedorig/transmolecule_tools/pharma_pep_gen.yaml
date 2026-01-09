@@ -1,0 +1,32 @@
+id: pharma_pep_gen
+name: PharmaPepGen
+version: 1.0
+description: null
+inputs:
+  - nmae: input_files
+    type: data
+    name: Pharmacophore json
+    optional: false
+    extensions: 
+      - json
+    multiple: true
+    src: hda
+    help: null
+
+  - id: num_samples
+    type: text
+    name: Number of samples
+    optional: false
+    value: null
+    src: hda
+    help: Number of samples to generate per input file
+
+input_exampels: "{'input_files': [{'id': None, 'src': 'hda'}], 'num_samples': 10}"
+
+outputs: null
+
+output_collections:
+  - id: null
+    hid: null
+    name: PharmaPepGen Res(fasta)
+    example: "output_id = res['output_collections'][0]['id']"

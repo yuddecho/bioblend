@@ -1,0 +1,64 @@
+id: reinvent4_mol2mol
+name: Reinvent4 Mol2Mol
+version: 1.0
+description: find molecules similar to the provided molecules
+inputs:
+  - id: cond
+    name: Input SMILES
+    type: conditional
+    case_id: sele
+    cases:
+      - value: cond_1
+        inputs:
+          - id: smiles_content
+            type: text
+            name: SMILES
+            help: null
+            optional: false
+            value: "O=C(N(C)C)Nc1cc(ccc1F)SC1=C(N(c2ccncc2)C2CCN(CC2)C(=O)C)C(=O)N(C1=O)C(=O)N(C)C"
+      - value: cond_2
+        inputs:
+          - id: smiles_file
+            type: data
+            name: SMILES file
+            help: One SMILES per line
+            extensions:
+              - txt
+            multiple: false
+            options: false
+
+  - id: num_smiles
+    type: text
+    name: Generated quantity
+    help: null
+    optional: false
+    value: 1000
+
+  - id: temperature
+    type: text
+    name: Temperature
+    help: Range 08-15
+    optional: true
+    value: 10
+
+  - id: workers
+    type: text
+    name: Sim2PDB Workers
+    help: null
+    optional: true
+    value: 24
+
+input_exampels: "{'cond|sele': 'cond_1', 'cond|smiles_content': 'O=C(N(C)C)Nc1cc(ccc1F)SC1=C(N(c2ccncc2)C2CCN(CC2)C(=O)C)C(=O)N(C1=O)C(=O)N(C)C', 'num_smiles': '10', 'temperature': '1.2', 'workers': '4'}"
+
+outputs:
+  - id: null
+    hid: null
+    name: Reinvent4 Mol2Mol Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+  - id: null
+    hid: null
+    name: Reinvent4 Mol2Mol Res(pdb)
+    example: "output_id = res['output_collections'][0]['id']"

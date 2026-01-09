@@ -1,0 +1,48 @@
+id: obabel
+name: Obabel
+version: 1.0
+description: convert Reinvent4 results to pdb files
+inputs:
+  - id: input_file
+    type: data
+    name: Input file
+    help: Reinvent4 optimized molecules
+    multiple: false
+    optional: false
+    extensions:
+      - pdb
+      - sdf
+      - mol2
+    
+  - id: output_format
+    type: select
+    name: Output file format    
+    help: null
+    multiple: false
+    optional: false
+    options:
+      - [pdb, pdb, false]
+      - [sdf, sdf, false]
+      - [mol2, mol2, false]
+
+  - id: addi_param
+    type: text
+    name: Additional parameters
+    help: null
+    multiple: false
+    optional: true
+    value: null
+
+input_exampels: "{'input_file': {'id': None,'src': 'hda'}, 'output_format':'mol2', 'addi_param': ''}"
+
+outputs:
+  - id: null
+    hid: null
+    name: Obabel Res
+    file_ext: 
+      - pdb
+      - sdf
+      - mol2
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections: null

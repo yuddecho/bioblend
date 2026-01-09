@@ -1,0 +1,44 @@
+
+id: reinvent4_linker
+name: Reinvent4 LinkInvent
+version: 1.0
+description: find a linker/scaffold to link two fragments
+inputs:
+  - id: smiles_content
+    name: SMILES
+    type: text
+    multiple: false
+    help: 2 warheads per line separated with '|'
+    optional: false
+    value: "Oc1cncc(*)c1|*c1ccoc1"
+
+  - id: num_smiles
+    name: Generated quantity
+    type: text
+    multiple: false
+    help: Number of skeletons spawned (will be deduplicated at the end)
+    optional: false
+    value: 20
+
+  - id: workers
+    name: Sim2PDB Workers
+    type: text
+    multiple: false
+    help: The higher the value, the better the novelty of spawning the skeleton
+    optional: true
+    value: 2
+
+input_exampels: "{'smiles_content': 'Oc1cncc(*)c1|*c1ccoc1', 'num_smiles': '20', 'workers': '2'}"
+
+outputs:
+  - id: null
+    hid: null
+    name: Reinvent4 LinkInvent Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+  - id: null
+    hid: null
+    name: Reinvent4 LinkInvent Res(pdb)
+    example: "output_id = res['output_collections'][0]['id']"

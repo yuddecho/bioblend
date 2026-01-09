@@ -1,0 +1,31 @@
+id: smi2pdb
+name: Smiles2PDB
+version: 1.0
+description: convert Reinvent4 results to pdb files
+inputs:
+  - id: smiles_file
+    type: data
+    name: Smiles file
+    help: Reinvent4 optimized molecules
+    multiple: false
+    optional: false
+    extensions:
+      - csv
+    
+  - id: workers
+    type: text
+    name: Workers
+    help: null
+    multiple: false
+    optional: true
+    value: "8"
+
+input_exampels: "{'smiles_file': {'id': None,'src': 'hda'}, 'workers': '2'}"
+
+outputs: null
+
+output_collections:
+  - id: null
+    hid: null
+    name: Smiles2PDB Res(pdb)
+    example: "output_id = res['output_collections'][0]['id']"

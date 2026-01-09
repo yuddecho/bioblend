@@ -1,0 +1,32 @@
+id: sdf2smi
+name: SDF2Smiles
+version: 1.0
+description: convert SDF files to SMILES strings
+inputs:
+  - id: sdf_files
+    type: data
+    name: SDF file
+    help: SDF file with molecules
+    multiple: true
+    optional: false
+    extensions:
+      - sdf
+    
+  - id: smiles_column_name
+    type: text
+    name: Set smiles column name
+    help: null
+    multiple: false
+    optional: true
+    value: null   
+
+input_exampels: "{'sdf_files': [{'id': None,'src': 'hda'}], 'smiles_column_name': ''}"
+
+outputs:
+  - id: null
+    hid: null
+    name: SDF2Smiles Res(csv)
+    file_ext: csv
+    example: "output_id = res['outputs'][0]['id']"
+
+output_collections: null
