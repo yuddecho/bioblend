@@ -23,7 +23,7 @@ cd bioblend && pip install .
 3. Generate and copy the API key.
 
 ```python
-from bioblend.transmolecule import TransMolecule
+from bioblend.aimedorig import TransMolecule
 
 # connect to transmolecule instance
 client = TransMolecule(url='http://localhost:8080', key='your_api_key')
