@@ -74,12 +74,10 @@ input_examples:
   input_csv:
     id: null
     src: hda
-  cnn_filter|enable_cnn: 'true'
-  cnn_filter|cnn_threshold: '5.0'
-  min_filter|enable_min: 'true'
-  min_filter|minimized_threshold: '-5.0'
+  cnn_filter|enable_cnn: ''
+  min_filter|enable_min: ''
   topk_filter|enable_topk: 'true'
-  topk_filter|top_k: '10'
+  topk_filter|top_k: '3'
   topk_filter|topk_by: CNN_affinity
 
 outputs:

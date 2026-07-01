@@ -16,11 +16,20 @@ inputs:
   help: null
   optional: true
   value: 8
+- id: max_count
+  type: integer
+  name: Max ligand count
+  optional: true
+  value: -1
+  min: -1
+  max: 99999
+  help: Maximum number of ligands to dock. -1 for all, small number for testing
 input_examples:
   receptor:
     id: null
     src: hda
   workers: '8'
+  max_count: '3'
 outputs:
 - id: null
   hid: null

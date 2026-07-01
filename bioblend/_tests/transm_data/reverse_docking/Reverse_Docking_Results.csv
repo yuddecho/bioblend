@@ -1,0 +1,16 @@
+receptor,docked_pose,pose_id,CNN_affinity,minimizedAffinity
+6gfx_protein,6gfx_protein_docked_1.sdf,1,5.0286,0.0
+6gfy_protein,6gfy_protein_docked_1.sdf,1,4.9917,0.0
+6gf9_protein,6gf9_protein_docked_1.sdf,1,4.9747,0.0
+6gfx_protein,6gfx_protein_docked_2.sdf,2,4.9726,0.0
+6gfz_protein,6gfz_protein_docked_0.sdf,0,4.9688,0.0
+6gfs_protein,6gfs_protein_docked_0.sdf,0,4.9538,0.0
+6gfx_protein,6gfx_protein_docked_0.sdf,0,4.9136,0.0
+6gfz_protein,6gfz_protein_docked_1.sdf,1,4.9111,0.0
+6gfz_protein,6gfz_protein_docked_2.sdf,2,4.9104,0.0
+6gfy_protein,6gfy_protein_docked_0.sdf,0,4.9026,0.0
+6gfy_protein,6gfy_protein_docked_2.sdf,2,4.8902,0.0
+6gfs_protein,6gfs_protein_docked_2.sdf,2,4.8849,0.0
+6gfs_protein,6gfs_protein_docked_1.sdf,1,4.8814,0.0
+6gf9_protein,6gf9_protein_docked_0.sdf,0,4.8677,0.0
+6gf9_protein,6gf9_protein_docked_2.sdf,2,4.8588,0.0

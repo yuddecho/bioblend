@@ -34,7 +34,7 @@ inputs:
   type: float
   name: Minimized affinity threshold
   optional: false
-  value: -5.0
+  value: -7.0
   help: Keep poses with minimized affinity scores less than or equal to this threshold
 
 input_examples:
@@ -45,7 +45,7 @@ input_examples:
   - id: null
     src: hda
   cnn_affinity_threshold: '5.0'
-  minimized_affinity_threshold: '-5.0'
+  minimized_affinity_threshold: '-7.0'
 
 outputs:
 - id: null

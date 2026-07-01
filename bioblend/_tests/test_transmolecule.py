@@ -14,16 +14,26 @@ class TestTransMolecule(unittest.TestCase):
         
         self.trans_molecule = TransMolecule(transmolecule_url, transmolecule_key)
 
-        is_new_history = True
+        cache_file = os.path.join(os.path.dirname(__file__), ".transmolecule_history_id")
+        history_id = os.environ.get("TRANSMOLECULE_HISTORY_ID") or (
+            open(cache_file).read().strip() if os.path.exists(cache_file) else ""
+        )
 
-        if is_new_history:
-            self.trans_molecule.history.create(name='Test')
-
-            self.trans_molecule.dataset.upload(file_dir=_DATA)
-
+        if history_id:
+            try:
+                self.trans_molecule.history.select(history_id=history_id)
+            except Exception as e:
+                raise RuntimeError(
+                    f"History {history_id} 不存在或无法访问，"
+                    f"请检查 TRANSMOLECULE_HISTORY_ID 或删除 {cache_file} 以新建。\n"
+                    f"原始错误: {e}"
+                ) from e
         else:
-            history_id = "e14715ce11d8be59"
-            self.trans_molecule.history.select(history_id=history_id) 
+            self.trans_molecule.history.create(name='Test')
+            self.trans_molecule.dataset.upload(file_dir=_DATA)
+            with open(cache_file, 'w') as f:
+                f.write(self.trans_molecule.ctx.history_id)
+            print(f"\nexport TRANSMOLECULE_HISTORY_ID={self.trans_molecule.ctx.history_id}\n")
 
         self.data = self.trans_molecule.dataset.get()
         # print(self.data)        
@@ -558,6 +568,63 @@ class TestTransMolecule(unittest.TestCase):
         print(f'tool_input: {tool_input}')
 
         # 运行工具，提取药效团
+        tool_output = tool.run(tool_input)
+        print(f'tool_output: {tool_output}')
+
+    def test_reverse_docking(self):
+        tool_id = 'reverse_docking'
+        print(f"\n----------------------------------------------------------------------")
+        print(f"Testing {tool_id}")
+
+        tool = self.tools.get_tool(tool_id=tool_id)
+
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
+
+        tool_input = input_examples
+        tool_input['input_ligand']['id'] = self.data['CID_66414.sdf'][0]['id']
+
+        print(f'tool_input: {tool_input}')
+
+        tool_output = tool.run(tool_input)
+        print(f'tool_output: {tool_output}')
+
+    def test_gnina_res_filter(self):
+        tool_id = 'gnina_res_filter'
+        print(f"\n----------------------------------------------------------------------")
+        print(f"Testing {tool_id}")
+
+        tool = self.tools.get_tool(tool_id=tool_id)
+
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
+
+        tool_input = input_examples
+        tool_input['table_file']['id'] = self.data['gnina_res_filter.csv'][0]['id']
+
+        data = ['reinvent4_813_docked_0_docked_0.sdf', 'reinvent4_813_docked_0_docked_1.sdf', 'reinvent4_813_docked_0_docked_2.sdf']
+        tool_input['input_files'] = [{'id': self.data[data_name][0]['id'], 'src': 'hda'} for data_name in data]
+
+        print(f'tool_input: {tool_input}')
+
+        tool_output = tool.run(tool_input)
+        print(f'tool_output: {tool_output}')
+
+    def test_reverse_docking_res_filter(self):
+        tool_id = 'reverse_docking_res_filter'
+        print(f"\n----------------------------------------------------------------------")
+        print(f"Testing {tool_id}")
+
+        tool = self.tools.get_tool(tool_id=tool_id)
+
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
+
+        tool_input = input_examples
+        tool_input['input_csv']['id'] = self.data['Reverse_Docking_Results.csv'][0]['id']
+
+        print(f'tool_input: {tool_input}')
+
         tool_output = tool.run(tool_input)
         print(f'tool_output: {tool_output}')
 

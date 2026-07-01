@@ -31,12 +31,22 @@ inputs:
   max: 96
   help: Number of parallel workers
 
+- id: max_count
+  type: integer
+  name: Max protein count
+  optional: true
+  value: -1
+  min: -1
+  max: 99999
+  help: Maximum number of proteins to dock. -1 for all, small number for testing
+
 input_examples:
   input_ligand:
     id: null
     src: hda
   num_modes: '3'
   workers: '6'
+  max_count: '3'
 
 outputs:
 - id: null
