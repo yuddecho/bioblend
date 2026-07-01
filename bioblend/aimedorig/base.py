@@ -5,6 +5,19 @@ from dataclasses import dataclass
 
 from bioblend.galaxy import GalaxyInstance
 
+
+def create_session(url, key, tool_cls):
+    """创建 Galaxy 会话，返回 (ctx, history, tool, dataset, workflow)"""
+    gi = GalaxyInstance(url, key)
+    try:
+        history = gi.histories.get_most_recently_used_history()
+    except Exception as e:
+        raise ConnectionError(f"无法获取最近使用的历史记录: {e}") from e
+    print(f"[History] now {history['id']}: {history['name']}")
+    ctx = GalaxyCtx(gi, history['id'])
+    return ctx, History(ctx), tool_cls(ctx), Dataset(ctx), Workflow(ctx)
+
+
 @dataclass
 class GalaxyCtx:
     gi: GalaxyInstance
@@ -15,8 +28,10 @@ class History:
         self.ctx = ctx
 
     def create(self, name: str = None):
-        # 创建一个新的历史记录，并设为当前历史记录
-        new_history = self.ctx.gi.histories.create_history(name=name)
+        try:
+            new_history = self.ctx.gi.histories.create_history(name=name)
+        except Exception as e:
+            raise RuntimeError(f"创建历史记录失败: {e}") from e
         self.ctx.history_id = new_history['id']
         print(f"[History] create {self.ctx.history_id}: {new_history['name']}")
 
@@ -83,7 +98,10 @@ class Dataset:
             file_type = 'auto'
 
         # 文件类型指定不起作用
-        res = self.ctx.gi.tools.upload_file(file_path, self.ctx.history_id, file_type=file_type)
+        try:
+            res = self.ctx.gi.tools.upload_file(file_path, self.ctx.history_id, file_type=file_type)
+        except Exception as e:
+            raise RuntimeError(f"上传文件失败 {file_path}: {e}") from e
         return res['outputs'][0]
 
     def upload(self, file_path: str = None, file_dir: str = None):
@@ -149,13 +167,17 @@ class BaseTool:
         print('id,\t name,\t description')
         for tool_section in self.tools:
             for tool in tool_section['elems']:
-                print(f'{tool["id"]},\t {tool["name"]},\t {tool["description"]}')
+                name = tool.get('name') or tool.get('text', 'N/A')
+                desc = tool.get('description', 'N/A')
+                print(f'{tool["id"]},\t {name},\t {desc}')
 
     def _get_tool_dict(self):
         tool_dict = {}
         for tool_section in self.tools:
             for tool in tool_section['elems']:
-                tool_dict[tool['name']] = tool['id']
+                name = tool.get('name')
+                if name:
+                    tool_dict[name] = tool['id']
         return tool_dict
 
 class Workflow:
@@ -189,9 +211,9 @@ class Workflow:
         else:
             print("No workflow found")
     
-    def selct(self, workflow_id: str):
+    def select(self, workflow_id: str):
         if workflow_id not in self.workflow_id_dict:
-            raise ValueError(f"workflow_id {workflow_id} not found, please check workflow id in workflow list: {self.workflow_dict}")
+            raise ValueError(f"workflow_id {workflow_id} not found, please check workflow id in workflow list: {self.workflow_id_dict}")
         
         self.workflow_id = workflow_id
         self.workflow_content = self.ctx.gi.workflows.show_workflow(self.workflow_id)
@@ -225,7 +247,10 @@ class Workflow:
 
 
     def run(self, inputs: dict) -> dict:
-        # 运行工作流
-        outputs = self.ctx.gi.workflows.invoke_workflow(history_id=self.ctx.history_id, workflow_id=self.workflow_id, inputs=inputs)
-
+        try:
+            outputs = self.ctx.gi.workflows.invoke_workflow(
+                history_id=self.ctx.history_id, workflow_id=self.workflow_id, inputs=inputs
+            )
+        except Exception as e:
+            raise RuntimeError(f"运行工作流失败: {e}") from e
         return outputs
