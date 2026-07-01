@@ -1,0 +1,61 @@
+id: gnina_res_filter
+name: GNINA Res Filter
+version: 1.0
+description: Filter GNINA docking results by affinity thresholds
+inputs:
+- id: table_file
+  type: data
+  name: GNINA result CSV
+  optional: false
+  extensions:
+  - csv
+  multiple: false
+  src: hda
+  help: CSV file with GNINA docking scores
+
+- id: input_files
+  type: data
+  name: GNINA result SDF files
+  optional: false
+  extensions:
+  - sdf
+  multiple: true
+  src: hda
+  help: SDF files of GNINA docking poses
+
+- id: cnn_affinity_threshold
+  type: float
+  name: CNN affinity threshold
+  optional: false
+  value: 5.0
+  help: Keep poses with CNN affinity scores greater than or equal to this threshold
+
+- id: minimized_affinity_threshold
+  type: float
+  name: Minimized affinity threshold
+  optional: false
+  value: -5.0
+  help: Keep poses with minimized affinity scores less than or equal to this threshold
+
+input_examples:
+  table_file:
+    id: null
+    src: hda
+  input_files:
+  - id: null
+    src: hda
+  cnn_affinity_threshold: '5.0'
+  minimized_affinity_threshold: '-5.0'
+
+outputs:
+- id: null
+  hid: null
+  name: GNINA Res Filter Res(csv)
+  file_ext: csv
+  example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+- id: null
+  hid: null
+  name: GNINA Res Filter Res(sdf)
+  example: "output_id = res['output_collections'][0]['id']"

@@ -1,0 +1,54 @@
+id: reverse_docking
+name: Reverse Docking
+version: 1.0
+description: Dock one ligand against multiple receptors to identify potential protein targets
+inputs:
+- id: input_ligand
+  type: data
+  name: Ligand(SDF)
+  optional: false
+  extensions:
+  - sdf
+  multiple: false
+  src: hda
+  help: SDF file of the ligand to dock against all receptors
+
+- id: num_modes
+  type: integer
+  name: Number of binding modes
+  optional: false
+  value: 3
+  min: 1
+  max: 9
+  help: Maximum number of binding modes to generate per receptor
+
+- id: workers
+  type: integer
+  name: Workers
+  optional: true
+  value: 6
+  min: 1
+  max: 96
+  help: Number of parallel workers
+
+input_examples:
+  input_ligand:
+    id: null
+    src: hda
+  num_modes: '3'
+  workers: '6'
+
+outputs:
+- id: null
+  hid: null
+  name: Reverse Docking Res(csv)
+  file_ext: csv
+  example: "output_id = res['outputs'][0]['id']"
+
+- id: null
+  hid: null
+  name: Reverse Docking Res(zip)
+  file_ext: zip
+  example: "output_id = res['outputs'][1]['id']"
+
+output_collections: null

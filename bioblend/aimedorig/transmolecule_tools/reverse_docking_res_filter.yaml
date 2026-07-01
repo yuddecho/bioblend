@@ -1,0 +1,96 @@
+id: reverse_docking_res_filter
+name: Reverse Docking Res Filter
+version: 1.0
+description: Filter reverse docking results by affinity thresholds and TopK
+inputs:
+- id: input_csv
+  type: data
+  name: Reverse docking result CSV
+  optional: false
+  extensions:
+  - csv
+  multiple: false
+  src: hda
+  help: CSV file from the Reverse Docking tool
+
+- id: cnn_filter
+  name: CNN Affinity Filter
+  type: conditional
+  case_id: enable_cnn
+  cases:
+  - value: 'true'
+    inputs:
+    - id: cnn_threshold
+      type: float
+      name: CNN affinity threshold
+      optional: false
+      value: 5.0
+      help: Keep poses with CNN affinity >= this value
+  - value: ''
+
+- id: min_filter
+  name: Minimized Affinity Filter
+  type: conditional
+  case_id: enable_min
+  cases:
+  - value: 'true'
+    inputs:
+    - id: minimized_threshold
+      type: float
+      name: Minimized affinity threshold
+      optional: false
+      value: -5.0
+      help: Keep poses with minimized affinity <= this value
+  - value: ''
+
+- id: topk_filter
+  name: TopK Filter
+  type: conditional
+  case_id: enable_topk
+  cases:
+  - value: 'true'
+    inputs:
+    - id: top_k
+      type: integer
+      name: Top K
+      optional: false
+      value: 10
+      min: 1
+      max: 1000
+      help: Number of top results to keep
+    - id: topk_by
+      type: select
+      name: Rank by
+      optional: false
+      value: CNN_affinity
+      options:
+      - [CNN affinity (higher is better), CNN_affinity, false]
+      - [Minimized affinity (lower is better), minimizedAffinity, false]
+      - [Both (CNN desc, minimized asc), both, false]
+      help: Field to rank results by for TopK selection
+  - value: ''
+
+input_examples:
+  input_csv:
+    id: null
+    src: hda
+  cnn_filter|enable_cnn: 'true'
+  cnn_filter|cnn_threshold: '5.0'
+  min_filter|enable_min: 'true'
+  min_filter|minimized_threshold: '-5.0'
+  topk_filter|enable_topk: 'true'
+  topk_filter|top_k: '10'
+  topk_filter|topk_by: CNN_affinity
+
+outputs:
+- id: null
+  hid: null
+  name: Reverse Docking Res Filter Res(csv)
+  file_ext: csv
+  example: "output_id = res['outputs'][0]['id']"
+
+output_collections:
+- id: null
+  hid: null
+  name: Reverse Docking Res Filter Res(pdb)
+  example: "output_id = res['output_collections'][0]['id']"
