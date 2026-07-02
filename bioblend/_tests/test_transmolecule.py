@@ -51,11 +51,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels['No']
+        tool_input = input_examples['No']
 
         data = ['reinvent4_813_docked_0_docked_0.sdf', 'reinvent4_813_docked_0_docked_1.sdf', 'reinvent4_813_docked_0_docked_2.sdf']
         tool_input['sdf_files'] = [{'id': self.data[data_name][0]['id'], 'src': 'hda'} for data_name in data]
@@ -75,11 +75,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels['No']
+        tool_input = input_examples['No']
 
         data = ['reinvent4_813_docked_0_docked_0.sdf', 'reinvent4_813_docked_0_docked_1.sdf', 'reinvent4_813_docked_0_docked_2.sdf']
         tool_input['sdf_files'] = [{'id': self.data[data_name][0]['id'], 'src': 'hda'} for data_name in data]
@@ -99,11 +99,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['receptor'] = {'id': self.data['3u2z_protein.pdb'][0]['id'], 'src': 'hda'}
         tool_input['ligand'] = {'id': self.data['130.pdb'][0]['id'], 'src': 'hda'}
@@ -123,11 +123,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['ligand_zip_file']['id'] = self.data['matched_files.zip'][0]['id']
 
@@ -146,11 +146,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['json_file']['id'] = self.data['test.json'][0]['id']
 
@@ -169,11 +169,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['mol_file']['id'] = self.data['ph_6.txt'][0]['id']
 
@@ -192,11 +192,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['receptor']['id'] = self.data['receptor.pdb'][0]['id']
         tool_input['reference_ligand']['id'] = self.data['ligand.sdf'][0]['id']
@@ -219,11 +219,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['receptor']['id'] = self.data['receptor.pdb'][0]['id']
 
@@ -245,11 +245,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['receptor']['id'] = self.data['receptor.pdb'][0]['id']
 
@@ -268,11 +268,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels['No']
+        tool_input = input_examples['No']
 
         data = ['reinvent4_813_docked_0_docked_0.sdf', 'reinvent4_813_docked_0_docked_1.sdf', 'reinvent4_813_docked_0_docked_2.sdf']
         tool_input['sdf_files'] = [{'id': self.data[data_name][0]['id'], 'src': 'hda'} for data_name in data]
@@ -292,11 +292,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['input_file']['id'] = self.data['T608.sdf'][0]['id']
 
@@ -315,11 +315,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['pdb_files'] = [{'id': self.data['1ITI_214.pdb'][0]['id'], 'src': 'hda'}]
 
@@ -338,11 +338,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['pdb_file']['id'] = self.data['receptor.pdb'][0]['id']
         tool_input['sdf_file']['id'] = self.data['ligand.sdf'][0]['id']
@@ -362,11 +362,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['input_files'] = [{'id': self.data['test.json'][0]['id'], 'src': 'hda'}]
 
@@ -385,11 +385,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels['smiles']
+        tool_input = input_examples['smiles']
 
         print(f'tool_input: {tool_input}')
 
@@ -406,11 +406,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         print(f'tool_input: {tool_input}')
 
@@ -427,11 +427,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         print(f'tool_input: {tool_input}')
 
@@ -448,11 +448,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         print(f'tool_input: {tool_input}')
 
@@ -469,11 +469,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         print(f'tool_input: {tool_input}')
 
@@ -490,11 +490,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         data = ['RAIEQIIQPDI.sdf', 'ZXWUGWV.sdf', 'T608.sdf']
         tool_input['sdf_files'] = [{'id': self.data[data_name][0]['id'], 'src': 'hda'} for data_name in data]
@@ -514,11 +514,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['smiles_file']['id'] = self.data['Reinvent4_Res.csv'][0]['id']
 
@@ -537,11 +537,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         tool_input['table_file']['id'] = self.data['Reinvent4_Res.csv'][0]['id']
         tool_input['sort_column'] = 'NLL'
@@ -561,11 +561,11 @@ class TestTransMolecule(unittest.TestCase):
         tool = self.tools.get_tool(tool_id=tool_id)
 
         # 获取工具输入示例
-        input_exampels = tool.inputs()
-        print(f'input_exampels: {input_exampels}')
+        input_examples = tool.inputs()
+        print(f'input_examples: {input_examples}')
 
         # 构建输入，将上传的文件数据的id放到对应value
-        tool_input = input_exampels
+        tool_input = input_examples
 
         print(f'tool_input: {tool_input}')
 

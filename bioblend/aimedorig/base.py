@@ -118,6 +118,8 @@ class Dataset:
             # 上传目录下所有文件到当前历史记录
             for _root, _, _files in os.walk(file_dir):
                 for file_name in _files:
+                    if file_name.endswith('.md'):
+                        continue
                     file_path = os.path.join(_root, file_name)
                     files.append(self._upload_file(file_path))
 
