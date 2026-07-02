@@ -3,7 +3,7 @@ name: PharmaPepGen
 version: 1.0
 description: null
 inputs:
-- nmae: input_files
+- id: input_files
   type: data
   name: Pharmacophore json
   optional: false
@@ -16,14 +16,13 @@ inputs:
   type: text
   name: Number of samples
   optional: false
-  value: null
-  src: hda
+  value: '10'
   help: Number of samples to generate per input file
 input_examples:
   input_files:
   - id: null
     src: hda
-  num_samples: 10
+  num_samples: '10'
 outputs: null
 output_collections:
 - id: null

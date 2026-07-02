@@ -48,6 +48,14 @@ inputs:
       multiple: true
       optional: false
       src: hda
+
+- id: workers
+  type: text
+  name: Workers
+  optional: true
+  value: '8'
+  help: Number of parallel workers
+
 input_examples:
   receptor:
     id: null

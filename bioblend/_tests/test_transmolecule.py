@@ -30,10 +30,12 @@ class TestTransMolecule(unittest.TestCase):
                 ) from e
         else:
             self.trans_molecule.history.create(name='Test')
+            history_id = self.trans_molecule.ctx.history_id
+            self.trans_molecule.ctx.gi.histories.update_history(history_id, name=f"test-{history_id}")
             self.trans_molecule.dataset.upload(file_dir=_DATA)
             with open(cache_file, 'w') as f:
-                f.write(self.trans_molecule.ctx.history_id)
-            print(f"\nexport TRANSMOLECULE_HISTORY_ID={self.trans_molecule.ctx.history_id}\n")
+                f.write(history_id)
+            print(f"\nexport TRANSMOLECULE_HISTORY_ID={history_id}\n")
 
         self.data = self.trans_molecule.dataset.get()
         # print(self.data)        

@@ -7,6 +7,9 @@ inputs:
   name: Receptor
   type: data
   multiple: false
+  extensions:
+  - pdb
+  src: hda
   help: PDB file of the receptor
   optional: false
 - id: workers

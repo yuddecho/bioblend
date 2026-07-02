@@ -47,3 +47,5 @@ docs/_build
 
 #
 test-26-7-1.md
+.DS_Store
+bioblend/_tests/transprotein_data/
