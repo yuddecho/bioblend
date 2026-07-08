@@ -1,0 +1,25 @@
+id: extract_protein_sequences
+name: Protein 2 FASTA
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Protein PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+outputs:
+- id: null
+  hid: null
+  name: Protein 2 FASTA Res(fasta)
+  file_ext: fasta
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

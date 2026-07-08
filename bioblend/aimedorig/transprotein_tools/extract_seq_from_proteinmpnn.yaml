@@ -1,0 +1,32 @@
+id: extract_seq_from_proteinmpnn
+name: ProteinMPNN Top Sequences
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Protein FASTA files
+  extensions:
+  - fasta
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: number
+  type: integer
+  name: Number of Protein to Extract
+  optional: false
+  value: 1
+  min: 1
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+  number: '1'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: ProteinMPNN Top Sequences Res(fasta)
+  example: output_id = res['output_collections'][0]['id']

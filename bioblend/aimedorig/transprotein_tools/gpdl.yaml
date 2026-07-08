@@ -1,0 +1,66 @@
+id: gpdl
+name: GPDL
+version: 1.0
+description: null
+inputs:
+- id: reference
+  type: data
+  name: Protein PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: inpaint_seq
+  type: text
+  name: Inpaint sequence
+  optional: false
+  value: 50,D297-311,50
+  help: null
+- id: mask_len
+  type: text
+  name: Mask length
+  optional: false
+  value: 50,50
+  help: null
+- id: motif_id
+  type: text
+  name: Motif ID
+  optional: false
+  value: D297-311
+  help: null
+- id: max_mut
+  type: text
+  name: Max mutations
+  optional: false
+  value: '15'
+  help: null
+- id: inp_num
+  type: text
+  name: Output num
+  optional: false
+  value: '2'
+  help: null
+- id: step
+  type: text
+  name: MCMC steps
+  optional: false
+  value: '5'
+  help: null
+input_examples:
+  reference:
+    id: null
+    src: hda
+  inpaint_seq: 50,D297-311,50
+  mask_len: 50,50
+  motif_id: D297-311
+  max_mut: '15'
+  inp_num: '2'
+  step: '5'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: GPDL Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

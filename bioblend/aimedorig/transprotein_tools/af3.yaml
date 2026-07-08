@@ -1,0 +1,46 @@
+id: af3
+name: AlphaFold3
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Protein json file
+  extensions:
+  - json
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: input_bin
+  type: data
+  name: The AlphaFold 3 model parameters
+  extensions:
+  - zst
+  - txt
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+  input_bin:
+    id: null
+    src: hda
+outputs:
+- id: null
+  hid: null
+  name: AlphaFold3 Res(csv)
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections:
+- id: null
+  hid: null
+  name: AlphaFold3 Res(cif)
+  example: output_id = res['output_collections'][0]['id']
+- id: null
+  hid: null
+  name: AlphaFold3 Res(json)
+  example: output_id = res['output_collections'][1]['id']

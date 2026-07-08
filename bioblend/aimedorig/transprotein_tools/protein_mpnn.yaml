@@ -1,0 +1,76 @@
+id: protein_mpnn
+name: ProteinMPNN
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Protein PDB file
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: chains_to_design
+  type: text
+  name: Chains to design
+  optional: false
+  value: A
+  help: null
+- id: fixed_positions
+  type: text
+  name: Fixed positions
+  optional: true
+  value: 36 37 38 40 42 46 50 94 97 104
+  help: null
+- id: num_seq_per_target
+  type: integer
+  name: Number seq per target
+  optional: false
+  value: 8
+  min: 1
+  help: null
+- id: sampling_temp
+  type: text
+  name: Sampling
+  optional: false
+  value: '0.1'
+  help: null
+- id: seed
+  type: integer
+  name: Random seed
+  optional: true
+  value: 0
+  help: null
+- id: batch_size
+  type: integer
+  name: Batch size
+  optional: true
+  value: 1
+  help: null
+- id: use_soluble_model
+  type: select
+  name: Use soluble model
+  optional: true
+  value: '0'
+  options:
+  - ['No', '0', false]
+  - ['Yes', '1', false]
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  chains_to_design: A
+  fixed_positions: 36 37 38 40 42 46 50 94 97 104
+  num_seq_per_target: 8
+  sampling_temp: '0.1'
+  seed: 0
+  batch_size: '1'
+  use_soluble_model: '0'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: ProteinMPNN Res(fasta)
+  example: output_id = res['output_collections'][0]['id']

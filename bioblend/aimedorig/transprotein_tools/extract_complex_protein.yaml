@@ -1,0 +1,36 @@
+id: extract_complex_protein
+name: Extract Complex Protein
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Complex Protein PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: input_name_files
+  type: data
+  name: Monomer Protein PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+  input_name_files:
+  - id: null
+    src: hda
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: Extract Complex Protein Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

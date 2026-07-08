@@ -1,0 +1,69 @@
+id: rf_diffusion_ms
+name: RFdiffusion
+version: 1.0
+description: Motif Scaffolding
+inputs:
+- id: input_pdb
+  type: data
+  name: Protein PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: contigs
+  type: text
+  name: Contigs
+  optional: false
+  value: 35-35/A36-38/1-1/A40-40/1-1/A42-42/3-3/A46-46/3-3/A50-50/43-43/A94-94/2-2/A97-97/6-6/A104-104/15-15
+  help: null
+- id: num_designs
+  type: integer
+  name: Number of design
+  optional: false
+  value: 2
+  min: 1
+  help: null
+- id: length
+  type: text
+  name: Total length
+  optional: true
+  value: ''
+  help: null
+- id: hotspot
+  type: text
+  name: Hotspot residues
+  optional: true
+  value: ''
+  help: null
+- id: weight
+  type: select
+  name: Model weights
+  optional: false
+  value: ActiveSite_ckpt.pt
+  options:
+  - [Base_ckpt.pt, Base_ckpt.pt, false]
+  - [ActiveSite_ckpt.pt, ActiveSite_ckpt.pt, true]
+  - [Complex_Fold_base_ckpt.pt, Complex_Fold_base_ckpt.pt, false]
+  - [InpaintSeq_Fold_ckpt.pt, InpaintSeq_Fold_ckpt.pt, false]
+  - [Complex_base_ckpt.pt, Complex_base_ckpt.pt, false]
+  - [InpaintSeq_ckpt.pt, InpaintSeq_ckpt.pt, false]
+  - [Base_epoch8_ckpt.pt, Base_epoch8_ckpt.pt, false]
+  - [Complex_beta_ckpt.pt, Complex_beta_ckpt.pt, false]
+  - [RF_structure_prediction_weights.pt, RF_structure_prediction_weights.pt, false]
+input_examples:
+  input_pdb:
+    id: null
+    src: hda
+  contigs: 35-35/A36-38/1-1/A40-40/1-1/A42-42/3-3/A46-46/3-3/A50-50/43-43/A94-94/2-2/A97-97/6-6/A104-104/15-15
+  num_designs: 2
+  length: ''
+  hotspot: ''
+  weight: ActiveSite_ckpt.pt
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: RFdiffusion Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

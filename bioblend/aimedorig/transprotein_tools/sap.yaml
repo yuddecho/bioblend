@@ -1,0 +1,50 @@
+id: sap
+name: SAP Score
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Input PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: options
+  type: conditional
+  name: Choose filter way
+  case_id: filter_way
+  cases:
+  - value: r
+    inputs:
+    - id: r
+      type: data
+      name: Reference PDB file
+      extensions:
+      - pdb
+      multiple: false
+      optional: false
+      src: hda
+      help: null
+  - value: sap
+    inputs:
+    - id: sap
+      type: float
+      name: Value of SAP for filtering threshold
+      optional: false
+      value: 80.0
+      help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+  options|filter_way: sap
+  options|sap: '80.0'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: SAP Score Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

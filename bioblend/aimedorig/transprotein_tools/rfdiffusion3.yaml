@@ -1,0 +1,73 @@
+id: rfdiffusion3
+name: RFdiffusion3
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input structure file (PDB/CIF)
+  extensions:
+  - pdb
+  - cif
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: contig
+  type: text
+  name: Contig string
+  optional: false
+  value: A1-10,/0,B15-24,/0,120-130
+  help: null
+- id: length
+  type: text
+  name: Total length range
+  optional: false
+  value: 140-150
+  help: null
+- id: hotspots
+  type: text
+  name: Hotspot residues
+  optional: false
+  value: ''
+  help: null
+- id: is_non_loopy
+  type: boolean
+  name: Reduce loops
+  optional: false
+  value: 'true'
+  truevalue: 'true'
+  falsevalue: 'false'
+  help: null
+- id: num_designs
+  type: integer
+  name: Number of designs
+  optional: false
+  value: 2
+  min: 1
+  max: 100
+  help: null
+input_examples:
+  input_pdb:
+    id: null
+    src: hda
+  contig: A1-10,/0,B15-24,/0,120-130
+  length: 140-150
+  hotspots: ''
+  is_non_loopy: 'true'
+  num_designs: 10
+outputs:
+- id: null
+  hid: null
+  name: RFdiffusion3 Res(yaml)
+  file_ext: yaml
+  example: output_id = res['outputs'][0]['id']
+output_collections:
+- id: null
+  hid: null
+  name: RFdiffusion3 Res(cif)
+  example: output_id = res['output_collections'][0]['id']
+- id: null
+  hid: null
+  name: RFdiffusion3 Res(json)
+  example: output_id = res['output_collections'][1]['id']

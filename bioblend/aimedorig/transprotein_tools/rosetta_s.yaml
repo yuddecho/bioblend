@@ -1,0 +1,176 @@
+id: rosetta_s
+name: Rosetta
+version: 1.0
+description: Rosetta Screener
+inputs:
+- id: input_file
+  type: data
+  name: Rosetta calculation results
+  extensions:
+  - csv
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: input_files_1
+  type: data
+  name: Protein PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: input_files_2
+  type: data
+  name: Relaxed protein PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: binder_score
+  type: text
+  name: Binder score
+  optional: true
+  value: ''
+  help: null
+- id: surface_hydrophobicity
+  type: text
+  name: Surface hydrophobicity
+  optional: true
+  value: ''
+  help: null
+- id: interface_sc
+  type: text
+  name: Interface sc
+  optional: true
+  value: ''
+  help: null
+- id: interface_packstat
+  type: text
+  name: Interface packstat
+  optional: true
+  value: ''
+  help: null
+- id: interface_dG
+  type: text
+  name: Interface dG
+  optional: true
+  value: ''
+  help: null
+- id: dG_cross
+  type: text
+  name: dG cross
+  optional: true
+  value: ''
+  help: null
+- id: interface_dSASA
+  type: text
+  name: Interface dSASA
+  optional: true
+  value: ''
+  help: null
+- id: interface_dG_SASA_ratio
+  type: text
+  name: Interface dG SASA ratio
+  optional: true
+  value: ''
+  help: null
+- id: dG_separated
+  type: text
+  name: dG separated
+  optional: true
+  value: ''
+  help: null
+- id: interface_fraction
+  type: text
+  name: Interface fraction
+  optional: true
+  value: ''
+  help: null
+- id: interface_hydrophobicity
+  type: text
+  name: Interface hydrophobicity
+  optional: true
+  value: ''
+  help: null
+- id: interface_nres
+  type: text
+  name: Interface nres
+  optional: true
+  value: ''
+  help: null
+- id: interface_hbonds
+  type: text
+  name: Interface hbonds
+  optional: true
+  value: ''
+  help: null
+- id: interface_hbond_percentage
+  type: text
+  name: Interface hbond percentage
+  optional: true
+  value: ''
+  help: null
+- id: interface_delta_unsat_hbonds
+  type: text
+  name: Interface delta unsat hbonds
+  optional: true
+  value: ''
+  help: null
+- id: interface_delta_unsat_hbonds_percentage
+  type: text
+  name: Interface delta unsat hbonds percentage
+  optional: true
+  value: ''
+  help: null
+- id: clash_score
+  type: text
+  name: Clash score
+  optional: true
+  value: ''
+  help: null
+input_examples:
+  input_file:
+    id: null
+    src: hda
+  input_files_1:
+  - id: null
+    src: hda
+  input_files_2:
+  - id: null
+    src: hda
+  binder_score: ''
+  surface_hydrophobicity: ''
+  interface_sc: ''
+  interface_packstat: ''
+  interface_dG: ''
+  dG_cross: ''
+  interface_dSASA: ''
+  interface_dG_SASA_ratio: ''
+  dG_separated: ''
+  interface_fraction: ''
+  interface_hydrophobicity: ''
+  interface_nres: ''
+  interface_hbonds: ''
+  interface_hbond_percentage: ''
+  interface_delta_unsat_hbonds: ''
+  interface_delta_unsat_hbonds_percentage: ''
+  clash_score: ''
+outputs:
+- id: null
+  hid: null
+  name: Rosetta Res(csv)
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections:
+- id: null
+  hid: null
+  name: Rosetta Res(pdb)
+  example: output_id = res['output_collections'][0]['id']
+- id: null
+  hid: null
+  name: Rosetta Res(relax pdb)
+  example: output_id = res['output_collections'][1]['id']

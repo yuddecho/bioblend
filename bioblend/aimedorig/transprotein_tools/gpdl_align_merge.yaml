@@ -1,0 +1,36 @@
+id: gpdl_align_merge
+name: GPDL Align and Merge
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Protein PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: rmsd_r
+  type: data
+  name: Reference protein PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+  rmsd_r:
+    id: null
+    src: hda
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: GPDL Align and Merge Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

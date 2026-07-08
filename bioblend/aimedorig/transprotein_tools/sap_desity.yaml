@@ -1,0 +1,42 @@
+id: sap_desity
+name: Density of SAP Score
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Input PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: reference_pdb
+  type: data
+  name: Reference PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+  reference_pdb:
+    id: null
+    src: hda
+outputs:
+- id: null
+  hid: null
+  name: SAP filter result
+  file_ext: tabular
+  example: output_id = res['outputs'][0]['id']
+- id: null
+  hid: null
+  name: Density plot of SAP Score
+  file_ext: png
+  example: output_id = res['outputs'][1]['id']
+output_collections: null

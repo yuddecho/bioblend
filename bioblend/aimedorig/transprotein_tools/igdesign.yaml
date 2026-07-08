@@ -1,0 +1,180 @@
+id: igdesign
+name: IgDesign
+version: 1.0
+description: null
+inputs:
+- id: antibody_protein
+  type: data
+  name: Antibody protein
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: lmdesign_num_decoding_orders
+  type: text
+  name: IgDesign Samples
+  optional: false
+  value: '2'
+  help: null
+- id: lmdesign_num_pmpnn_seqs
+  type: text
+  name: IgMPNN Samples
+  optional: false
+  value: '2'
+  help: null
+- id: lmdesign_num_lm_seqs
+  type: text
+  name: Language Model Samples
+  optional: false
+  value: '2'
+  help: null
+- id: lmdesign_pmpnn_logit_temperature
+  type: text
+  name: IgMPNN Sampling Temperature
+  optional: false
+  value: '0.5'
+  help: null
+- id: lmdesign_output_logit_temperature
+  type: text
+  name: IgDesign Sampling Temperature
+  optional: false
+  value: '0.5'
+  help: null
+- id: independent_loss
+  type: select
+  name: Independent Loss
+  optional: false
+  value: 'true'
+  options:
+  - ['true', 'true', false]
+  - ['false', 'false', false]
+- id: condition_on_light_chain
+  type: select
+  name: Condition on Light Chain
+  optional: false
+  value: 'false'
+  options:
+  - ['true', 'true', false]
+  - ['false', 'false', false]
+- id: condition_on_antigen
+  type: select
+  name: Condition on Antigen
+  optional: false
+  value: 'true'
+  options:
+  - ['true', 'true', false]
+  - ['false', 'false', false]
+- id: predict_light_chain
+  type: select
+  name: Predict Light Chain
+  optional: false
+  value: 'true'
+  options:
+  - ['true', 'true', false]
+  - ['false', 'false', false]
+- id: antigen_chain_id
+  type: text
+  name: Antigen Chain ID
+  optional: false
+  value: C
+  help: null
+- id: heavy_chain_id
+  type: text
+  name: Heavy Chain ID
+  optional: false
+  value: B
+  help: null
+- id: light_chain_id
+  type: text
+  name: Light Chain ID
+  optional: false
+  value: A
+  help: null
+- id: cdr_positions
+  type: repeat
+  name: CDR Position Mapping
+  inputs:
+  - id: region_order_id
+    type: text
+    name: Region Order ID
+    value: hcdr1
+    help: null
+  - id: positions
+    type: text
+    name: Positions
+    value: ''
+    help: null
+  - id: chain
+    type: select
+    name: Chain
+    value: heavy
+    options:
+    - [light, Light, false]
+    - [heavy, Heavy, false]
+    - [antigen, Antigen, false]
+- id: batch_size
+  type: text
+  name: Batch size
+  optional: false
+  value: '1'
+  help: null
+- id: num_batches
+  type: text
+  name: Number of Batches
+  optional: false
+  value: '1'
+  help: null
+input_examples:
+  antibody_protein:
+    id: null
+    src: hda
+  lmdesign_num_decoding_orders: '2'
+  lmdesign_num_pmpnn_seqs: '2'
+  lmdesign_num_lm_seqs: '2'
+  lmdesign_pmpnn_logit_temperature: '0.5'
+  lmdesign_output_logit_temperature: '0.5'
+  independent_loss: 'true'
+  condition_on_light_chain: 'false'
+  condition_on_antigen: 'true'
+  predict_light_chain: 'true'
+  antigen_chain_id: C
+  heavy_chain_id: B
+  light_chain_id: A
+  cdr_positions_0|region_order_id: hcdr1
+  cdr_positions_0|positions: 25-32
+  cdr_positions_0|chain: heavy
+  cdr_positions_1|region_order_id: hcdr2
+  cdr_positions_1|positions: 50-57
+  cdr_positions_1|chain: heavy
+  cdr_positions_2|region_order_id: hcdr3
+  cdr_positions_2|positions: 96-108
+  cdr_positions_2|chain: heavy
+  cdr_positions_3|region_order_id: lcdr1
+  cdr_positions_3|positions: 26-31
+  cdr_positions_3|chain: light
+  cdr_positions_4|region_order_id: lcdr2
+  cdr_positions_4|positions: 49-51
+  cdr_positions_4|chain: light
+  cdr_positions_5|region_order_id: lcdr3
+  cdr_positions_5|positions: 88-96
+  cdr_positions_5|chain: light
+  batch_size: '1'
+  num_batches: '1'
+outputs:
+- id: null
+  hid: null
+  name: IgDesign Res(fasta)
+  file_ext: fasta
+  example: output_id = res['outputs'][0]['id']
+- id: null
+  hid: null
+  name: IgDesign Res(csv)
+  file_ext: csv
+  example: output_id = res['outputs'][1]['id']
+output_collections:
+- id: null
+  hid: null
+  name: IgDesign Res(fasta)
+  example: output_id = res['output_collections'][0]['id']

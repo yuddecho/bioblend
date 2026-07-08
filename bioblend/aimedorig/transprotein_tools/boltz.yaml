@@ -1,0 +1,71 @@
+id: boltz
+name: Boltz
+version: 1.0
+description: null
+inputs:
+- id: antibody_protein
+  type: data
+  name: Receptor protein
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: designed_protein_chain
+  type: text
+  name: Receptor chain
+  optional: false
+  value: A
+  help: null
+- id: hotspots
+  type: text
+  name: Hotspot residues
+  optional: false
+  value: A:51,A:52,A:50,A:48,A:62,A:65
+  help: null
+- id: cyclic_peptide
+  type: select
+  name: Is the binder a cyclic peptide?
+  optional: false
+  value: 'true'
+  options:
+  - ['True', 'true', false]
+  - ['False', 'false', false]
+- id: binder_chain
+  type: text
+  name: Binder chain
+  optional: false
+  value: B
+  help: null
+- id: input_files
+  type: data
+  name: Binder FASTA files
+  extensions:
+  - fasta
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  antibody_protein:
+    id: null
+    src: hda
+  designed_protein_chain: A
+  hotspots: A:51,A:52,A:50,A:48,A:62,A:65
+  cyclic_peptide: 'true'
+  binder_chain: B
+  input_files:
+  - id: null
+    src: hda
+outputs:
+- id: null
+  hid: null
+  name: Boltz Res(csv)
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections:
+- id: null
+  hid: null
+  name: Boltz Res(cif)
+  example: output_id = res['output_collections'][0]['id']

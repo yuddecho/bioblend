@@ -1,0 +1,74 @@
+id: motif_rmsd
+name: Motif-RMSD
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Protein PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: motif_rmsd_r
+  type: data
+  name: Reference protein PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: motif_d
+  type: data
+  name: Motif positions of designed PDBs
+  extensions:
+  - txt
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: motif_r
+  type: data
+  name: Motif positions of the reference PDBs
+  extensions:
+  - txt
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: motif_rmsd_rmsd
+  type: float
+  name: Filtering threshold of Motif-RMSD
+  optional: false
+  value: 1.0
+  help: null
+- id: motif_rmsd_plddt
+  type: float
+  name: Filtering threshold of pLDDT
+  optional: false
+  value: 80.0
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+  motif_rmsd_r:
+    id: null
+    src: hda
+  motif_d:
+    id: null
+    src: hda
+  motif_r:
+    id: null
+    src: hda
+  motif_rmsd_rmsd: '1.0'
+  motif_rmsd_plddt: '80.0'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: Motif-RMSD Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

@@ -1,0 +1,36 @@
+id: af2
+name: AlphaFold2
+version: 1.0
+description: null
+inputs:
+- id: input
+  type: data
+  name: Protein FASTA file
+  extensions:
+  - fasta
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: multimer
+  type: data
+  name: Multimer prediction
+  extensions:
+  - fasta
+  multiple: false
+  optional: true
+  src: hda
+  help: null
+input_examples:
+  input:
+    id: null
+    src: hda
+  multimer:
+    id: null
+    src: hda
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: AlphaFold2 Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

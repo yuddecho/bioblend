@@ -1,0 +1,41 @@
+id: fasta_rename_new
+name: Fasta Rename
+version: 1.0
+description: null
+inputs:
+- id: input_fasta
+  type: data
+  name: Protein FASTA file
+  extensions:
+  - fasta
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: prefix
+  type: text
+  name: Fasta name prefix
+  optional: false
+  value: sample
+  help: null
+- id: is_protein_mpnn
+  type: select
+  name: Is ProteinMPNN
+  optional: false
+  value: none
+  options:
+  - ['No', 'none', false]
+  - ['Yes', 'mpnn', false]
+input_examples:
+  input_fasta:
+    id: null
+    src: hda
+  prefix: sample
+  is_protein_mpnn: none
+outputs:
+- id: null
+  hid: null
+  name: Fasta Renamed Res(fasta)
+  file_ext: fasta
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

@@ -1,0 +1,39 @@
+id: abacus_r
+name: ABACUS-R
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Protein PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: chain_name
+  type: text
+  name: Chain name
+  optional: false
+  value: A
+  help: null
+- id: num_seq
+  type: integer
+  name: Number of sequences
+  optional: false
+  value: 2
+  min: 1
+  help: null
+input_examples:
+  input_pdb:
+    id: null
+    src: hda
+  chain_name: A
+  num_seq: '2'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: ABACUS-R Res(fasta)
+  example: output_id = res['output_collections'][0]['id']

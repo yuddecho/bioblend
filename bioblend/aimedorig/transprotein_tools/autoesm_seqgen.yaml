@@ -1,0 +1,55 @@
+id: autoesm_seqgen
+name: AutoESM-SeqGen
+version: 1.0
+description: null
+inputs:
+- id: input_fastas
+  type: data
+  name: Protein FASTA file
+  extensions:
+  - fasta
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: input_fastas_chain
+  type: text
+  name: Target chain
+  optional: false
+  value: A
+  help: null
+- id: multimers
+  type: repeat
+  name: Multimer FASTA
+  inputs:
+  - id: input_fasta
+    type: data
+    name: Protein FASTA file
+    extensions:
+    - fasta
+    multiple: false
+    optional: false
+    src: hda
+    help: null
+  - id: input_fasta_chain
+    type: text
+    name: Target chain
+    optional: false
+    value: B
+    help: null
+input_examples:
+  input_fastas:
+    id: null
+    src: hda
+  input_fastas_chain: A
+  multimers_0|input_fasta:
+    id: null
+    src: hda
+  multimers_0|input_fasta_chain: B
+outputs:
+- id: null
+  hid: null
+  name: AutoESM-SeqGen Res(fasta)
+  file_ext: fasta
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

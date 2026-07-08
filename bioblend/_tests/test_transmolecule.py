@@ -11,36 +11,33 @@ class TestTransMolecule(unittest.TestCase):
     def setUpClass(self):
         transmolecule_url = os.environ["TRANSMOLECULE_URL"]
         transmolecule_key = os.environ["TRANSMOLECULE_API_KEY"]
-        
+
         self.trans_molecule = TransMolecule(transmolecule_url, transmolecule_key)
 
         cache_file = os.path.join(os.path.dirname(__file__), ".transmolecule_history_id")
-        history_id = os.environ.get("TRANSMOLECULE_HISTORY_ID") or (
-            open(cache_file).read().strip() if os.path.exists(cache_file) else ""
-        )
+        create = os.environ.get("TRANSMOLECULE_CREATE_HISTORY", "false").lower() == "true"
 
-        if history_id:
-            try:
-                self.trans_molecule.history.select(history_id=history_id)
-            except Exception as e:
-                raise RuntimeError(
-                    f"History {history_id} 不存在或无法访问，"
-                    f"请检查 TRANSMOLECULE_HISTORY_ID 或删除 {cache_file} 以新建。\n"
-                    f"原始错误: {e}"
-                ) from e
-        else:
+        if create:
             self.trans_molecule.history.create(name='Test')
             history_id = self.trans_molecule.ctx.history_id
             self.trans_molecule.ctx.gi.histories.update_history(history_id, name=f"test-{history_id}")
             self.trans_molecule.dataset.upload(file_dir=_DATA)
             with open(cache_file, 'w') as f:
                 f.write(history_id)
-            print(f"\nexport TRANSMOLECULE_HISTORY_ID={history_id}\n")
+            print(f"\n[History] create {history_id}\n")
+        elif os.path.exists(cache_file):
+            history_id = open(cache_file).read().strip()
+            self.trans_molecule.history.select(history_id=history_id)
+        else:
+            print(f"\n[History] use current (no cache, no create)\n")
 
         self.data = self.trans_molecule.dataset.get()
-        # print(self.data)        
 
         self.tools = self.trans_molecule.tool
+
+    @classmethod
+    def tearDownClass(self):
+        self.tools.show_warnings()
 
     def test_admet_ai(self):
         tool_id = 'admet_ai'

@@ -1,0 +1,42 @@
+id: global_rmsd_desity
+name: Density of Global RMSD
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Input PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: r
+  type: data
+  name: Reference PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+  r:
+    id: null
+    src: hda
+outputs:
+- id: null
+  hid: null
+  name: Global RMSD Score filter result
+  file_ext: tabular
+  example: output_id = res['outputs'][0]['id']
+- id: null
+  hid: null
+  name: Density plot of Surface ESM_RMSD
+  file_ext: png
+  example: output_id = res['outputs'][1]['id']
+output_collections: null

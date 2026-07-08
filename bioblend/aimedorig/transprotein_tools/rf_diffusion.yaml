@@ -1,0 +1,27 @@
+id: rf_diffusion
+name: RFdiffusion
+version: 1.0
+description: null
+inputs:
+- id: contigs
+  type: text
+  name: Contigs
+  optional: false
+  value: 50-50
+  help: null
+- id: num_designs
+  type: integer
+  name: Number of designs
+  optional: false
+  value: 1
+  min: 1
+  help: null
+input_examples:
+  contigs: 50-50
+  num_designs: '1'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: RFdiffusion Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

@@ -1,12 +1,18 @@
 import os
 import json
+import yaml
 
 from dataclasses import dataclass
 
 from bioblend.galaxy import GalaxyInstance
 
 
-def create_session(url, key, tool_cls):
+class ToolNotAvailableError(Exception):
+    """工具在 Galaxy 服务器上不可用"""
+    pass
+
+
+def create_session(url, key, tools_dir):
     """创建 Galaxy 会话，返回 (ctx, history, tool, dataset, workflow)"""
     gi = GalaxyInstance(url, key)
     try:
@@ -15,7 +21,7 @@ def create_session(url, key, tool_cls):
         raise ConnectionError(f"无法获取最近使用的历史记录: {e}") from e
     print(f"[History] now {history['id']}: {history['name']}")
     ctx = GalaxyCtx(gi, history['id'])
-    return ctx, History(ctx), tool_cls(ctx), Dataset(ctx), Workflow(ctx)
+    return ctx, History(ctx), Tool(ctx, tools_dir), Dataset(ctx), Workflow(ctx)
 
 
 @dataclass
@@ -118,7 +124,7 @@ class Dataset:
             # 上传目录下所有文件到当前历史记录
             for _root, _, _files in os.walk(file_dir):
                 for file_name in _files:
-                    if file_name.endswith('.md'):
+                    if file_name.endswith('.md') or file_name == '.DS_Store':
                         continue
                     file_path = os.path.join(_root, file_name)
                     files.append(self._upload_file(file_path))
@@ -181,6 +187,91 @@ class BaseTool:
                 if name:
                     tool_dict[name] = tool['id']
         return tool_dict
+
+class Tool(BaseTool):
+    def __init__(self, ctx: GalaxyCtx, tools_dir: str):
+        super().__init__(ctx)
+        self.tools_dir = tools_dir
+        self.warnings = []
+
+    def get_tool(self, tool_id: str = None, tool_name: str = None) -> "RunTool":
+        if tool_id is None and tool_name is None:
+            raise ValueError("tool_id or tool_name should be provided")
+
+        if tool_name:
+            _tool_id = self.tool_dict.get(tool_name, None)
+            if _tool_id is None:
+                raise ValueError(f"tool_name {tool_name} not found, please check tool name in tool panel: {self.tool_dict}")
+            elif tool_id and tool_id != _tool_id:
+                raise ValueError(f"tool_name {tool_name} not match tool_id {tool_id}, please check tool name in tool panel: {self.tool_dict}")
+
+            tool_id = _tool_id
+
+        if tool_id not in self.tool_dict.values():
+            msg = f"[WARNING] tool_id {tool_id} 未在 Galaxy 工具面板中找到，可能未安装"
+            self.warnings.append(msg)
+
+        tool_path = os.path.join(self.tools_dir, f"{tool_id}.yaml")
+        if not os.path.exists(tool_path):
+            raise ValueError(f"YAML 配置 {tool_id}.yaml 不存在")
+
+        return RunTool(self.ctx, tool_path)
+
+    def show_warnings(self):
+        if self.warnings:
+            print(f"\n{'='*60}")
+            print(f"工具面板警告汇总 ({len(self.warnings)} 个)")
+            print(f"{'='*60}")
+            for w in self.warnings:
+                print(w)
+            print(f"{'='*60}\n")
+
+
+class RunTool:
+    def __init__(self, ctx: GalaxyCtx, tool_path: str):
+        self.ctx = ctx
+        with open(tool_path, encoding='utf-8') as f:
+            self.tool_config = yaml.safe_load(f)
+
+    def info(self):
+        return self.tool_config
+
+    def inputs(self):
+        return self.tool_config['input_examples']
+
+    def _clean_inputs(self, inputs):
+        """递归清理 id 为 None 的可选 data 输入，避免 Galaxy 400 错误"""
+        if isinstance(inputs, dict):
+            if inputs.get('id') is None and 'src' in inputs:
+                return None
+            return {k: v for k, v in ((k, self._clean_inputs(v)) for k, v in inputs.items()) if v is not None}
+        elif isinstance(inputs, list):
+            return [item for item in (self._clean_inputs(i) for i in inputs) if item is not None]
+        return inputs
+
+    def run(self, inputs: dict) -> dict:
+        try:
+            tool_outputs = self.ctx.gi.tools.run_tool(
+                history_id=self.ctx.history_id, tool_id=self.tool_config['id'],
+                tool_inputs=self._clean_inputs(inputs)
+            )
+        except Exception as e:
+            error_msg = str(e)
+            if "Tool not found" in error_msg:
+                raise ToolNotAvailableError(f"工具 {self.tool_config['id']} 在服务器上不可用") from e
+            raise RuntimeError(f"运行工具 {self.tool_config['id']} 失败: {e}") from e
+
+        keep = ['id', 'hid', 'name', 'file_ext']
+        outputs = [{k: d[k] for k in keep} for d in tool_outputs['outputs']]
+
+        keep = ['id', 'hid', 'name']
+        output_collections = [{k: d[k] for k in keep} for d in tool_outputs['output_collections']]
+
+        keep = ['id', 'state', 'tool_id', 'create_time']
+        jobs = [{k: d[k] for k in keep} for d in tool_outputs['jobs']]
+
+        return {'jobs': jobs, 'outputs': outputs, 'output_collections': output_collections}
+
 
 class Workflow:
     def __init__(self, ctx: GalaxyCtx):

@@ -1,0 +1,40 @@
+id: gpd_multi
+name: GPD
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Protein PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: num_seq
+  type: integer
+  name: Number of sequences
+  optional: false
+  value: 2
+  min: 1
+  help: null
+- id: positions
+  type: text
+  name: Fixed position sites
+  optional: true
+  value: ''
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+  num_seq: '2'
+  positions: ''
+outputs:
+- id: null
+  hid: null
+  name: GPD Res(fasta)
+  file_ext: fasta
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

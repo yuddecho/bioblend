@@ -1,0 +1,114 @@
+id: amber_gpu
+name: Amber
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Protein PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: options
+  type: conditional
+  name: Receptor mask source
+  case_id: set_m
+  cases:
+  - value: va
+    inputs:
+    - id: va
+      type: text
+      name: Receptor mask
+      optional: false
+      value: 120-344
+      help: null
+  - value: fa
+    inputs:
+    - id: fa
+      type: data
+      name: Reference Protein FASTA file
+      extensions:
+      - fasta
+      multiple: false
+      optional: false
+      src: hda
+      help: null
+- id: heat1_tempi
+  type: text
+  name: Heat1 Temperature Initial
+  optional: true
+  value: '0'
+  help: null
+- id: heat1_temp0
+  type: text
+  name: Heat1 Temperature Final
+  optional: true
+  value: '300'
+  help: null
+- id: equ_tempi
+  type: text
+  name: Equilibration Temperature Initial
+  optional: true
+  value: '300'
+  help: null
+- id: equ_temp0
+  type: text
+  name: Equilibration Temperature Final
+  optional: true
+  value: '300'
+  help: null
+- id: md_tempi
+  type: text
+  name: MD Temperature Initial
+  optional: true
+  value: '300'
+  help: null
+- id: md_temp0
+  type: text
+  name: MD Temperature Final
+  optional: true
+  value: '300'
+  help: null
+- id: heat1_time
+  type: text
+  name: Heat1 Time (ns)
+  optional: true
+  value: '5'
+  help: null
+- id: equ_time
+  type: text
+  name: Equilibration Time (ns)
+  optional: true
+  value: '5'
+  help: null
+- id: md_time
+  type: text
+  name: MD Time (ns)
+  optional: true
+  value: '5'
+  help: null
+input_examples:
+  input_pdb:
+    id: null
+    src: hda
+  options|set_m: va
+  options|va: 120-344
+  heat1_tempi: '0'
+  heat1_temp0: '300'
+  equ_tempi: '300'
+  equ_temp0: '300'
+  md_tempi: '300'
+  md_temp0: '300'
+  heat1_time: '5'
+  equ_time: '5'
+  md_time: '5'
+outputs:
+- id: null
+  hid: null
+  name: Amber Res(dat)
+  file_ext: txt
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

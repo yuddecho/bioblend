@@ -1,0 +1,24 @@
+id: protein_monomers
+name: Protein Monomers
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Protein PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: Protein Monomers(pdb)
+  example: output_id = res['output_collections'][0]['id']

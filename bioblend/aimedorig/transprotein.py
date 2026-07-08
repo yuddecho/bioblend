@@ -1,32 +1,20 @@
+import os
+import yaml
+
 from bioblend.galaxy import GalaxyInstance
 
-from .base import GalaxyCtx, BaseTool, create_session
+from .base import GalaxyCtx, BaseTool, create_session, ToolNotAvailableError
 
-class Tool(BaseTool):
-    def __init__(self, ctx: GalaxyCtx):
-        super().__init__(ctx)
-    
-    def run(self, tool_id: str, inputs: dict) -> dict:
-        try:
-            tool_outputs = self.ctx.gi.tools.run_tool(history_id=self.ctx.history_id, tool_id=tool_id, tool_inputs=inputs)
-        except Exception as e:
-            raise RuntimeError(f"运行工具 {tool_id} 失败: {e}") from e
+import importlib.resources as res  # Py3.9+
 
-        keep = ['id', 'hid', 'name', 'file_ext']
-        outputs = [{k: d[k] for k in keep} for d in tool_outputs['outputs']]
+# 一次性把 tools 目录当成"资源目录"
+TRANSPROTEIN_TOOLS = str(res.files(__package__) / "transprotein_tools")
 
-        keep = ['id', 'hid', 'name']
-        output_collections = [{k: d[k] for k in keep} for d in tool_outputs['output_collections']]
 
-        keep = ['id', 'state', 'tool_id', 'create_time']
-        jobs = [{k: d[k] for k in keep} for d in tool_outputs['jobs']]
-
-        return {'jobs': jobs, 'outputs': outputs, 'output_collections': output_collections}
-    
 class TransProtein:
     def __init__(self, url, key):
         self.ctx, self.history, self.tool, self.dataset, self.workflow = \
-            create_session(url, key, Tool)
+            create_session(url, key, TRANSPROTEIN_TOOLS)
 
     def login(self, url, key):
         return GalaxyInstance(url, key)

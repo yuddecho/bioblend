@@ -1,0 +1,31 @@
+id: net_charge
+name: Net Charge
+version: 1.0
+description: null
+inputs:
+- id: input_files
+  type: data
+  name: Input PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: n
+  type: float
+  name: Value of net charge for filtering threshold
+  optional: false
+  value: -1.0
+  help: null
+input_examples:
+  input_files:
+  - id: null
+    src: hda
+  n: '-1.0'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: Net Charge Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

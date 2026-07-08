@@ -1,0 +1,24 @@
+id: idpfold
+name: IDPFold
+version: 1.0
+description: null
+inputs:
+- id: input
+  type: data
+  name: Protein FASTA file
+  extensions:
+  - fasta
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input:
+    id: null
+    src: hda
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: IDPFold Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

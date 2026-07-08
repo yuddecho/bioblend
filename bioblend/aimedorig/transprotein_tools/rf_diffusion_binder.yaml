@@ -1,0 +1,76 @@
+id: rf_diffusion_binder
+name: RFdiffusion
+version: 1.0
+description: Binder Design
+inputs:
+- id: input_pdb
+  type: data
+  name: Inference PDB
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: contigs
+  type: text
+  name: Contigs
+  optional: false
+  value: A1-150/0 70-100
+  help: null
+- id: num_designs
+  type: integer
+  name: Number of design
+  optional: false
+  value: 2
+  min: 1
+  help: null
+- id: hotspot
+  type: text
+  name: PPI Hotspot
+  optional: true
+  value: A59,A83,A91
+  help: null
+- id: noise_scale_ca
+  type: text
+  name: Translation noise multiplier
+  optional: true
+  value: '0'
+  help: null
+- id: noise_scale_frame
+  type: text
+  name: Rotation noise multiplier
+  optional: true
+  value: '0'
+  help: null
+- id: weight
+  type: select
+  name: Model weights
+  optional: false
+  value: Base_ckpt.pt
+  options:
+  - [Base_ckpt.pt, Base_ckpt.pt, true]
+  - [ActiveSite_ckpt.pt, ActiveSite_ckpt.pt, false]
+  - [Complex_Fold_base_ckpt.pt, Complex_Fold_base_ckpt.pt, false]
+  - [InpaintSeq_Fold_ckpt.pt, InpaintSeq_Fold_ckpt.pt, false]
+  - [Complex_base_ckpt.pt, Complex_base_ckpt.pt, false]
+  - [InpaintSeq_ckpt.pt, InpaintSeq_ckpt.pt, false]
+  - [Base_epoch8_ckpt.pt, Base_epoch8_ckpt.pt, false]
+  - [Complex_beta_ckpt.pt, Complex_beta_ckpt.pt, false]
+  - [RF_structure_prediction_weights.pt, RF_structure_prediction_weights.pt, false]
+input_examples:
+  input_pdb:
+    id: null
+    src: hda
+  contigs: A1-150/0 70-100
+  num_designs: '2'
+  hotspot: A59,A83,A91
+  noise_scale_ca: '0'
+  noise_scale_frame: '0'
+  weight: Base_ckpt.pt
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: RFdiffusion Res(pdb)
+  example: output_id = res['output_collections'][0]['id']
