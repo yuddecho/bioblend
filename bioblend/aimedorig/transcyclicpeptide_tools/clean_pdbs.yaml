@@ -1,0 +1,24 @@
+id: clean_pdbs
+name: Clean PDBs
+version: 1.0
+description: null
+inputs:
+- id: input_pdbs
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input_pdbs:
+  - id: null
+    src: hda
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: Clean PDBs Cleaned PDBs
+  example: output_id = res['output_collections'][0]['id']

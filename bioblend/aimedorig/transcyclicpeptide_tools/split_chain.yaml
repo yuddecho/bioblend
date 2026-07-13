@@ -1,0 +1,40 @@
+id: split_chain
+name: Split Receptor/Ligand Chains
+version: 1.0
+description: null
+inputs:
+- id: input_pdbs
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: ligand_chain
+  type: text
+  name: Ligand chain
+  optional: false
+  value: B
+  help: null
+input_examples:
+  input_pdbs:
+  - id: null
+    src: hda
+  ligand_chain: B
+outputs:
+- id: null
+  hid: null
+  name: Split Receptor/Ligand Chains Summary
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections:
+- id: null
+  hid: null
+  name: Split Receptor/Ligand Chains Receptors
+  example: output_id = res['output_collections'][0]['id']
+- id: null
+  hid: null
+  name: Split Receptor/Ligand Chains Ligands
+  example: output_id = res['output_collections'][1]['id']

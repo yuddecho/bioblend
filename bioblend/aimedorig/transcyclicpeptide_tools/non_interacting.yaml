@@ -1,0 +1,50 @@
+id: non_interacting
+name: Non-Interacting Residue Detection
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: ligand_chain
+  type: text
+  name: Ligand chain
+  optional: false
+  value: B
+  help: null
+- id: interact_dist
+  type: float
+  name: Interaction distance (A)
+  optional: false
+  value: 5.0
+  min: 2.0
+  max: 10.0
+  help: null
+- id: pass_ratio
+  type: float
+  name: Pass ratio
+  optional: false
+  value: 0.45
+  min: 0.0
+  max: 1.0
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  ligand_chain: B
+  interact_dist: '5.0'
+  pass_ratio: '0.45'
+outputs:
+- id: null
+  hid: null
+  name: Non-Interacting Residue Detection Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

@@ -1,0 +1,82 @@
+id: pep_filter_peptides
+name: Peptide Property Filter
+version: 1.0
+description: null
+inputs:
+- id: metrics_csv
+  type: data
+  name: Peptide scoring CSV
+  extensions:
+  - csv
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: input_pdbs
+  type: data
+  name: PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: true
+  src: hda
+  help: null
+- id: fasta_file
+  type: data
+  name: Merged FASTA file
+  extensions:
+  - fasta
+  multiple: false
+  optional: true
+  src: hda
+  help: null
+- id: name_col
+  type: text
+  name: Name column
+  optional: false
+  value: name
+  help: null
+- id: filters
+  type: repeat
+  name: Filter Conditions
+  optional: false
+  inputs:
+  - id: expression
+    type: text
+    name: Condition
+    optional: false
+    value: ''
+    help: null
+- id: debug
+  type: boolean
+  name: Debug mode
+  optional: false
+  truevalue: '--debug'
+  falsevalue: ''
+  help: null
+input_examples:
+  metrics_csv:
+    id: null
+    src: hda
+  input_pdbs:
+  - id: null
+    src: hda
+  name_col: name
+  filters_0|expression: iptm>=0.7
+  debug: ''
+outputs:
+- id: null
+  hid: null
+  name: Peptide Property Filter Filtered Sequences
+  file_ext: fasta
+  example: output_id = res['outputs'][0]['id']
+- id: null
+  hid: null
+  name: Peptide Property Filter Filtered Metrics CSV
+  file_ext: csv
+  example: output_id = res['outputs'][1]['id']
+output_collections:
+- id: null
+  hid: null
+  name: Peptide Property Filter Filtered PDBs
+  example: output_id = res['output_collections'][0]['id']

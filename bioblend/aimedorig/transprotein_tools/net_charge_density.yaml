@@ -1,5 +1,5 @@
-id: global_rmsd_desity
-name: Density of Global RMSD
+id: net_charge_density
+name: Density of Net Charge
 version: 1.0
 description: null
 inputs:
@@ -12,7 +12,7 @@ inputs:
   optional: false
   src: hda
   help: null
-- id: r
+- id: reference_pdb
   type: data
   name: Reference PDB file
   extensions:
@@ -25,18 +25,18 @@ input_examples:
   input_files:
   - id: null
     src: hda
-  r:
+  reference_pdb:
     id: null
     src: hda
 outputs:
 - id: null
   hid: null
-  name: Global RMSD Score filter result
+  name: Net Charge filter result
   file_ext: tabular
   example: output_id = res['outputs'][0]['id']
 - id: null
   hid: null
-  name: Density plot of Surface ESM_RMSD
+  name: Density plot of Net Charge
   file_ext: png
   example: output_id = res['outputs'][1]['id']
 output_collections: null

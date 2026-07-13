@@ -1,0 +1,25 @@
+id: prune_structure_metrics
+name: Prune Structure Metrics
+version: 1.0
+description: null
+inputs:
+- id: metrics_csv
+  type: data
+  name: Peptide scoring CSV
+  extensions:
+  - csv
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  metrics_csv:
+    id: null
+    src: hda
+outputs:
+- id: null
+  hid: null
+  name: Prune Structure Metrics CSV
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

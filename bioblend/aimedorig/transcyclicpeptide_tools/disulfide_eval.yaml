@@ -1,0 +1,34 @@
+id: disulfide_eval
+name: Disulfide Cyclic Peptide Evaluation
+version: 1.0
+description: null
+inputs:
+- id: input_fasta
+  type: data
+  name: Input FASTA
+  extensions:
+  - fasta
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: ph
+  type: float
+  name: pH
+  optional: false
+  value: 7.0
+  min: 0
+  max: 14
+  help: null
+input_examples:
+  input_fasta:
+    id: null
+    src: hda
+  ph: 7.0
+outputs:
+- id: null
+  hid: null
+  name: Disulfide Cyclic Peptide Evaluation Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

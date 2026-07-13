@@ -1,0 +1,48 @@
+id: hotspot
+name: Hotspot Residue Identification
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: rec_chain
+  type: text
+  name: Receptor chain
+  optional: false
+  value: A
+  help: null
+- id: bind_chain
+  type: text
+  name: Binder chain
+  optional: false
+  value: B
+  help: null
+- id: distance
+  type: float
+  name: Distance cutoff (A)
+  optional: false
+  value: 4.0
+  min: 2.0
+  max: 10.0
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  rec_chain: A
+  bind_chain: B
+  distance: '4.0'
+outputs:
+- id: null
+  hid: null
+  name: Hotspot Residue Identification Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

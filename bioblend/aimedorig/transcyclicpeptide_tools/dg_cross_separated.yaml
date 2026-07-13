@@ -1,0 +1,39 @@
+id: dg_cross_separated
+name: Binding Free Energy
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: rec_chain
+  type: text
+  name: Receptor chain
+  optional: false
+  value: 'A'
+  help: null
+- id: bind_chain
+  type: text
+  name: Binder chain
+  optional: false
+  value: 'B'
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  rec_chain: 'A'
+  bind_chain: 'B'
+outputs:
+- id: null
+  hid: null
+  name: Binding Free Energy Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

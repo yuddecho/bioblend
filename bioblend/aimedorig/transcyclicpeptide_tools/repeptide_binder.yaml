@@ -1,0 +1,69 @@
+id: repeptide_binder
+name: RFpeptide
+version: 1.0
+description: Macrocyclic Binder
+inputs:
+- id: input_pdb
+  type: data
+  name: Protein PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+- id: contigs
+  type: text
+  name: Contigs
+  optional: false
+  value: 12-18 A3-117/0
+- id: num_designs
+  type: integer
+  name: Number of design
+  optional: false
+  value: 1
+  min: 1
+- id: diffuser_t
+  type: text
+  name: Diffuser Timestep
+  optional: false
+  value: '50'
+- id: cyc_chains
+  type: text
+  name: Cyclic chains
+  optional: false
+  value: a
+- id: hotspot
+  type: text
+  name: Hotspot
+  optional: true
+  value: ''
+- id: weight
+  type: select
+  name: Model weights
+  optional: false
+  value: Base_ckpt.pt
+  options:
+  - ['Base_ckpt.pt', 'Base_ckpt.pt', true]
+  - ['ActiveSite_ckpt.pt', 'ActiveSite_ckpt.pt', false]
+  - ['Complex_Fold_base_ckpt.pt', 'Complex_Fold_base_ckpt.pt', false]
+  - ['InpaintSeq_Fold_ckpt.pt', 'InpaintSeq_Fold_ckpt.pt', false]
+  - ['Complex_base_ckpt.pt', 'Complex_base_ckpt.pt', false]
+  - ['InpaintSeq_ckpt.pt', 'InpaintSeq_ckpt.pt', false]
+  - ['Base_epoch8_ckpt.pt', 'Base_epoch8_ckpt.pt', false]
+  - ['Complex_beta_ckpt.pt', 'Complex_beta_ckpt.pt', false]
+  - ['RF_structure_prediction_weights.pt', 'RF_structure_prediction_weights.pt', false]
+input_examples:
+  input_pdb:
+    id: null
+    src: hda
+  contigs: 12-18 A3-117/0
+  num_designs: 1
+  diffuser_t: '50'
+  cyc_chains: a
+  weight: Base_ckpt.pt
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: RFpeptide Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

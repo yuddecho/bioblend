@@ -1,5 +1,5 @@
-id: sap_desity
-name: Density of SAP Score
+id: polar_score_density
+name: Density of Surface Polar Score
 version: 1.0
 description: null
 inputs:
@@ -31,12 +31,12 @@ input_examples:
 outputs:
 - id: null
   hid: null
-  name: SAP filter result
+  name: Surface Polar Score filter result
   file_ext: tabular
   example: output_id = res['outputs'][0]['id']
 - id: null
   hid: null
-  name: Density plot of SAP Score
+  name: Density plot of Surface Polar Score
   file_ext: png
   example: output_id = res['outputs'][1]['id']
 output_collections: null

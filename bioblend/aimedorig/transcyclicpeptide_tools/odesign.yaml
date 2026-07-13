@@ -1,0 +1,62 @@
+id: odesign
+name: ODesign
+version: 1.0
+description: Protein binder design with ODesign (cyclic peptide support)
+inputs:
+- id: input_file
+  type: data
+  name: Input PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+- id: chains
+  type: repeat
+  name: Chain Configuration
+  inputs:
+  - id: chain_type
+    type: select
+    name: Chain Type
+    value: 'proteinChain'
+    options:
+    - ['proteinChain', 'proteinChain', true]
+  - id: sequence
+    type: text
+    name: Sequence
+    optional: false
+    value: ''
+  - id: if_cyc
+    type: select
+    name: Cyclic peptide
+    value: 'true'
+    options:
+    - ['True', 'true', true]
+    - ['False', 'false', false]
+- id: specified_hotspots
+  type: text
+  name: Specified hotspots
+  optional: false
+  value: B/64,B/68,B/126,B/128
+- id: center_method
+  type: select
+  name: Center Method
+  optional: false
+  value: 'hotspot_center'
+  options:
+  - ['hotspot_center', 'hotspot_center', true]
+input_examples:
+  input_file:
+    id: null
+    src: hda
+  chains_0|chain_type: 'proteinChain'
+  chains_0|sequence: ACEPVDA
+  chains_0|if_cyc: 'true'
+  specified_hotspots: B/64,B/68,B/126,B/128
+  center_method: 'hotspot_center'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: ODesign output (CIF)
+  example: output_id = res['output_collections'][0]['id']

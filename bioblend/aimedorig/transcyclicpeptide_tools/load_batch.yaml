@@ -1,0 +1,67 @@
+id: load_batch
+name: PyMOL Batch Load
+version: 1.0
+description: null
+inputs:
+- id: input_pdbs
+  type: data
+  name: Relaxed PDBs
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: native_pdb
+  type: data
+  name: Native PDB
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: chain
+  type: text
+  name: Chain
+  optional: false
+  value: B
+  help: null
+- id: backbone_only
+  type: boolean
+  name: Backbone only
+  optional: true
+  truevalue: 'true'
+  falsevalue: 'false'
+  help: null
+- id: base_dir
+  type: text
+  name: Local download directory
+  optional: true
+  value: ''
+  help: null
+input_examples:
+  input_pdbs:
+  - id: null
+    src: hda
+  native_pdb:
+    id: null
+    src: hda
+  chain: B
+  backbone_only: 'false'
+outputs:
+- id: null
+  hid: null
+  name: PyMOL Batch Load Native PDB
+  file_ext: pdb
+  example: output_id = res['outputs'][0]['id']
+- id: null
+  hid: null
+  name: PyMOL Batch Load PyMOL Script
+  file_ext: txt
+  example: output_id = res['outputs'][1]['id']
+output_collections:
+- id: null
+  hid: null
+  name: PyMOL Batch Load Relaxed PDBs
+  example: output_id = res['output_collections'][0]['id']

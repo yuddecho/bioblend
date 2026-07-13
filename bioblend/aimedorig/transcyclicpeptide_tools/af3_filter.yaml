@@ -1,0 +1,85 @@
+id: af3_filter
+name: AF3-Metric Filter
+version: 1.2
+description: null
+inputs:
+- id: metrics_csv
+  type: data
+  name: AF3 Metrics CSV
+  extensions:
+  - csv
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: input_pdbs
+  type: data
+  name: Full-atom PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: input_fasta
+  type: data
+  name: MPNN FASTA files
+  extensions:
+  - fasta
+  multiple: true
+  optional: true
+  src: hda
+  help: null
+- id: iptm
+  type: float
+  name: iptm >=
+  optional: false
+  value: 0.7
+  min: 0.0
+  max: 1.0
+  help: null
+- id: plddt
+  type: float
+  name: chain_A pLDDT >=
+  optional: false
+  value: 0.0
+  min: 0.0
+  max: 100.0
+  help: null
+- id: ipae
+  type: float
+  name: ipae_A_B <=
+  optional: false
+  value: 0.0
+  min: 0.0
+  max: 30.0
+  help: null
+input_examples:
+  metrics_csv:
+    id: null
+    src: hda
+  input_pdbs:
+  - id: null
+    src: hda
+  input_fasta:
+  - id: null
+    src: hda
+  iptm: 0.7
+  plddt: 0.0
+  ipae: 0.0
+outputs:
+- id: null
+  hid: null
+  name: AF3-Metric Filter Designed Sequences
+  file_ext: fasta
+  example: output_id = res['outputs'][0]['id']
+- id: null
+  hid: null
+  name: AF3-Metric Filter Filtered Metrics CSV
+  file_ext: csv
+  example: output_id = res['outputs'][1]['id']
+output_collections:
+- id: null
+  hid: null
+  name: AF3-Metric Filter Filtered PDBs
+  example: output_id = res['output_collections'][0]['id']

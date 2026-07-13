@@ -1,0 +1,76 @@
+id: ppi_analysis
+name: PPI Interface Analysis
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: rec_chain
+  type: text
+  name: Receptor chain
+  optional: false
+  value: A
+  help: null
+- id: lig_chain
+  type: text
+  name: Ligand chain
+  optional: false
+  value: B
+  help: null
+- id: key_residues
+  type: text
+  name: Key residues
+  optional: true
+  value: ''
+  help: null
+- id: hbond_dist
+  type: float
+  name: H-bond distance (Å)
+  optional: false
+  value: 3.6
+  min: 2.0
+  max: 5.0
+  help: null
+- id: hbond_angle
+  type: float
+  name: H-bond angle (°)
+  optional: false
+  value: 55
+  min: 0
+  max: 180
+  help: null
+- id: salt_dist
+  type: float
+  name: Salt bridge distance (Å)
+  optional: false
+  value: 4.0
+  min: 2.0
+  max: 8.0
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  rec_chain: A
+  lig_chain: B
+  hbond_dist: 3.6
+  hbond_angle: 55
+  salt_dist: 4.0
+outputs:
+- id: null
+  hid: null
+  name: PPI Interface Analysis Summary
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections:
+- id: null
+  hid: null
+  name: PPI Interface Analysis Per-Structure Details
+  example: output_id = res['output_collections'][0]['id']

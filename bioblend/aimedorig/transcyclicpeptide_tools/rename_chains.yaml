@@ -1,0 +1,53 @@
+id: rename_chains
+name: Rename PDB Chains
+version: 1.0
+description: null
+inputs:
+- id: input_pdbs
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: chain_map
+  type: text
+  name: Chain map
+  optional: true
+  value: ''
+  help: null
+- id: auto_rename
+  type: boolean
+  name: Auto rename chains
+  optional: true
+  value: 'false'
+  truevalue: 'true'
+  falsevalue: 'false'
+  help: null
+- id: report_only
+  type: boolean
+  name: Report only
+  optional: true
+  value: 'false'
+  truevalue: 'true'
+  falsevalue: 'false'
+  help: null
+input_examples:
+  input_pdbs:
+  - id: null
+    src: hda
+  auto_rename: 'false'
+  report_only: 'false'
+outputs:
+- id: null
+  hid: null
+  name: Rename PDB Chains Summary
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections:
+- id: null
+  hid: null
+  name: Rename PDB Chains Renamed PDBs
+  example: output_id = res['output_collections'][0]['id']

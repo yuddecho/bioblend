@@ -1,0 +1,34 @@
+id: clash_score
+name: Clash Score
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: threshold
+  type: float
+  name: Clash threshold (A)
+  optional: false
+  value: 2.4
+  min: 0.5
+  max: 5.0
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  threshold: '2.4'
+outputs:
+- id: null
+  hid: null
+  name: Clash Score Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

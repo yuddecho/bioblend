@@ -1,0 +1,75 @@
+id: cpflow
+name: CPFlow
+version: 1.0
+description: Cyclic Peptide Design Based on Flow Matching
+inputs:
+- id: input_file
+  type: data
+  name: Input PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+- id: target_chain
+  type: text
+  name: Target chain
+  optional: false
+  value: A
+- id: binder_chain
+  type: text
+  name: Binder chain
+  optional: false
+  value: B
+- id: specified_hotspots
+  type: text
+  name: Specified hotspots
+  optional: false
+  value: A51,A52,A50,A48,A62,A65
+- id: samples_min_length
+  type: text
+  name: Sampling min length
+  optional: false
+  value: '12'
+- id: samples_max_length
+  type: text
+  name: Sampling max length
+  optional: false
+  value: '18'
+- id: sample_per_cplx
+  type: text
+  name: The number of samples per complex
+  optional: false
+  value: '32'
+- id: num_timesteps
+  type: integer
+  name: Num timesteps
+  optional: false
+  value: 20
+  min: 1
+  max: 50
+- id: samples_batch_size
+  type: integer
+  name: Samples batch size
+  optional: false
+  value: 8
+  min: 1
+  max: 32
+input_examples:
+  input_file:
+    id: null
+    src: hda
+  target_chain: A
+  binder_chain: B
+  specified_hotspots: A51,A52,A50,A48,A62,A65
+  samples_min_length: '12'
+  samples_max_length: '18'
+  sample_per_cplx: '32'
+  num_timesteps: 20
+  samples_batch_size: 8
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: CPFlow Res(pdb)
+  example: output_id = res['output_collections'][0]['id']

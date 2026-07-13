@@ -1,0 +1,42 @@
+id: fastrelax
+name: Rosetta FastRelax (Cyclic Peptide)
+version: 1.0
+description: null
+inputs:
+- id: input_pdbs
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: xml
+  type: data
+  name: RosettaScripts XML
+  extensions:
+  - xml
+  multiple: false
+  optional: true
+  src: hda
+  help: null
+- id: cores
+  type: integer
+  name: CPU cores
+  optional: false
+  value: 16
+  min: 1
+  max: 64
+  help: null
+input_examples:
+  input_pdbs:
+  - id: null
+    src: hda
+  cores: 16
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: Rosetta FastRelax (Cyclic Peptide) FastRelax PDBs
+  example: output_id = res['output_collections'][0]['id']

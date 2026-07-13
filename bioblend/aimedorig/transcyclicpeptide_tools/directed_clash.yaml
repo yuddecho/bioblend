@@ -1,0 +1,41 @@
+id: directed_clash
+name: Directed Clash Check
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: ligand_chain
+  type: text
+  name: Ligand chain
+  optional: false
+  value: B
+  help: null
+- id: clash_dist
+  type: float
+  name: Clash distance (A)
+  optional: false
+  value: 2.0
+  min: 0.5
+  max: 5.0
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  ligand_chain: B
+  clash_dist: '2.0'
+outputs:
+- id: null
+  hid: null
+  name: Directed Clash Check Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

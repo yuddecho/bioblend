@@ -1,0 +1,41 @@
+id: motif_centroid
+name: Motif Centroid Distance Filter
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: ligand_chain
+  type: text
+  name: Ligand chain
+  optional: false
+  value: 'B'
+  help: null
+- id: cutoff
+  type: float
+  name: Distance cutoff (A)
+  optional: false
+  value: 10.0
+  min: 2.0
+  max: 50.0
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  ligand_chain: 'B'
+  cutoff: '10.0'
+outputs:
+- id: null
+  hid: null
+  name: Motif Centroid Distance Filter Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

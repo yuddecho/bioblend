@@ -1,0 +1,92 @@
+id: boltzgen
+name: BoltzGen
+version: 1.0
+description: Universal all-atom generative design of protein, peptide and small-molecule binders
+inputs:
+- id: antibody_protein
+  type: data
+  name: Input CIF structure
+  extensions:
+  - cif
+  multiple: false
+  optional: false
+  src: hda
+- id: designed_protein_chain
+  type: text
+  name: Design chain
+  optional: false
+  value: B
+- id: num_designed_residues
+  type: text
+  name: Design residues
+  optional: false
+  value: 8..16
+- id: cyclize_peptide
+  type: select
+  name: Cyclize peptide
+  optional: false
+  value: 'true'
+  options:
+  - ['True', 'true', false]
+  - ['False', 'false', false]
+- id: cif_targets
+  type: repeat
+  name: Target chains
+  inputs:
+  - id: chain
+    type: text
+    name: Target chain
+    value: A
+- id: binding_types
+  type: repeat
+  name: Target binding residues
+  inputs:
+  - id: id
+    type: text
+    name: Chain
+    value: A
+  - id: binding
+    type: text
+    name: Target binding residues
+    value: 12,14,61,63,73,76,77,83,101,104,108
+- id: protocol
+  type: select
+  name: Design protocol
+  optional: false
+  value: 'protein-anything'
+  options:
+  - ['protein-anything', 'protein-anything', false]
+  - ['peptide-anything', 'peptide-anything', false]
+  - ['protein-small_molecule', 'protein-small_molecule', false]
+  - ['antibody-anything', 'antibody-anything', false]
+  - ['nanobody-anything', 'nanobody-anything', false]
+- id: num_designs
+  type: text
+  name: Number of intermediate designs
+  optional: false
+  value: '10'
+- id: budget
+  type: text
+  name: Final design budget
+  optional: false
+  value: '2'
+input_examples:
+  antibody_protein:
+    id: null
+    src: hda
+  designed_protein_chain: B
+  num_designed_residues: 8..16
+  cyclize_peptide: 'true'
+  cif_targets_0|chain: A
+  cif_targets_1|chain: C
+  binding_types_0|id: A
+  binding_types_0|binding: 12,14,61,63,73,76,77,83,101,104,108
+  protocol: 'protein-anything'
+  num_designs: '10'
+  budget: '2'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: BoltzGen Res(cif)
+  example: output_id = res['output_collections'][0]['id']

@@ -29,7 +29,7 @@ from bioblend.aimedorig import TransMolecule
 client = TransMolecule(url='http://localhost:8080', key='your_api_key')
 ```
 - For basic usage, please refer to file [transmolecule_usage.ipynb](https://github.com/yuddecho/bioblend/blob/main/transmolecule-info/transmolecule_usage.ipynb).
-- For tool parameter descriptions, please refer to file [README.md](https://github.com/yuddecho/bioblend/blob/main/bioblend/transmolecule/tools/README.md).
+- For tool parameter descriptions, please refer to file [README.md](https://github.com/yuddecho/bioblend/blob/main/bioblend/aimedorig/transmolecule_tools/README.md).
 - For a workflow usage tutorial, please refer to file [transmolecule_workflow.ipynb](https://github.com/yuddecho/bioblend/blob/main/transmolecule-info/transmolecule_workfolw.ipynb).
 
 ## test

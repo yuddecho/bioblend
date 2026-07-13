@@ -1,0 +1,66 @@
+id: cycpep_mpnn
+name: MPNN Sequence Design
+version: 1.0
+description: null
+inputs:
+- id: input_pdbs
+  type: data
+  name: Backbone PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: num_seq_per_target
+  type: integer
+  name: Sequences per target
+  optional: false
+  value: 8
+  min: 1
+  max: 100
+  help: null
+- id: sampling_temp
+  type: float
+  name: Sampling temperature
+  optional: false
+  value: 0.1
+  min: 0.01
+  max: 1.0
+  help: null
+- id: chains_to_design
+  type: text
+  name: Chains to design
+  optional: false
+  value: A
+  help: null
+- id: num_workers
+  type: integer
+  name: Parallel workers
+  optional: false
+  value: 16
+  min: 1
+  max: 32
+  help: null
+- id: dedup
+  type: boolean
+  name: Deduplicate sequences
+  optional: false
+  truevalue: '--dedup'
+  falsevalue: ''
+  help: null
+input_examples:
+  input_pdbs:
+  - id: null
+    src: hda
+  num_seq_per_target: 8
+  sampling_temp: 0.1
+  chains_to_design: A
+  num_workers: 16
+  dedup: '--dedup'
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: MPNN Sequence Design FASTA Sequences
+  example: output_id = res['output_collections'][0]['id']

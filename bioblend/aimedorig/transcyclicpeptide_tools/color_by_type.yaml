@@ -1,0 +1,20 @@
+id: color_by_type
+name: PyMOL Residue Type Coloring
+version: 1.0
+description: null
+inputs:
+- id: selection
+  type: text
+  name: Selection
+  optional: false
+  value: chain B
+  help: null
+input_examples:
+  selection: chain B
+outputs:
+- id: null
+  hid: null
+  name: PyMOL Residue Type Coloring Commands
+  file_ext: txt
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

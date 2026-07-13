@@ -70,6 +70,9 @@ select = ["E", "F", "B", "C4", "G", "ISC", "UP"]
 # E501 is line length (delegated to black)
 ignore = ["B9", "E501"]
 
+[tool.setuptools]
+packages = ["bioblend"]
+
 [tool.setuptools.dynamic]
 version = { attr = "bioblend.__version__" }
 
@@ -77,5 +80,7 @@ version = { attr = "bioblend.__version__" }
 "bioblend" = [
     "_tests/data/*",
     "py.typed",
-    "transmolecule/tools/*",
+    "aimedorig/transmolecule_tools/*",
+    "aimedorig/transprotein_tools/*",
+    "aimedorig/transcyclicpeptide_tools/*",
 ]

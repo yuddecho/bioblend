@@ -1,0 +1,50 @@
+id: buried_sasa
+name: Buried SASA Filter
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: ligand_chain
+  type: text
+  name: Ligand chain
+  optional: false
+  value: 'B'
+  help: null
+- id: buried_cutoff
+  type: float
+  name: Buried SASA cutoff (A^2)
+  optional: false
+  value: 1000.0
+  min: 100.0
+  max: 5000.0
+  help: null
+- id: ratio_cutoff
+  type: float
+  name: Ratio cutoff
+  optional: false
+  value: 0.85
+  min: 0.0
+  max: 1.0
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  ligand_chain: 'B'
+  buried_cutoff: '1000.0'
+  ratio_cutoff: '0.85'
+outputs:
+- id: null
+  hid: null
+  name: Buried SASA Filter Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

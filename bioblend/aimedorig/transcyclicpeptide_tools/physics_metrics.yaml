@@ -1,0 +1,37 @@
+id: physics_metrics
+name: Physics Metrics
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: xml
+  type: data
+  name: Physics XML
+  extensions:
+  - xml
+  multiple: false
+  optional: true
+  src: hda
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  xml:
+    id: null
+    src: hda
+outputs:
+- id: null
+  hid: null
+  name: Physics Metrics Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

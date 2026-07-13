@@ -1,0 +1,57 @@
+id: topk_ranker
+name: Top-K Ranker
+version: 1.0
+description: null
+inputs:
+- id: input_csv
+  type: data
+  name: Input CSV
+  extensions:
+  - csv
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: score_col
+  type: text
+  name: Score column
+  optional: false
+  value: interface_dG
+  help: null
+- id: topk
+  type: integer
+  name: Top K
+  optional: false
+  value: 20
+  min: 1
+  max: 1000
+  help: null
+- id: ascending
+  type: select
+  name: Sort order
+  optional: false
+  value: 'true'
+  options:
+  - ['true', 'Ascending (lower is better)', true]
+  - ['false', 'Descending (higher is better)', false]
+  help: null
+- id: require_pass
+  type: text
+  name: Pre-filter column
+  optional: true
+  value: ''
+  help: null
+input_examples:
+  input_csv:
+    id: null
+    src: hda
+  score_col: interface_dG
+  topk: 20
+  ascending: 'true'
+outputs:
+- id: null
+  hid: null
+  name: Top-K Ranker Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

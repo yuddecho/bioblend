@@ -1,42 +1,44 @@
-id: polar_score_desity
-name: Density of Surface Polar Score
+id: grid_score
+name: Grid Score
 version: 1.0
 description: null
 inputs:
-- id: input_files
+- id: input_pdb
   type: data
-  name: Input PDB files
+  name: Input PDB
   extensions:
   - pdb
   multiple: true
   optional: false
   src: hda
   help: null
-- id: reference_pdb
+- id: native_pdb
   type: data
-  name: Reference PDB file
+  name: Native complex PDB
   extensions:
   - pdb
   multiple: false
   optional: false
   src: hda
   help: null
+- id: ligand_chain
+  type: text
+  name: Ligand chain
+  optional: false
+  value: 'B'
+  help: null
 input_examples:
-  input_files:
+  input_pdb:
   - id: null
     src: hda
-  reference_pdb:
+  native_pdb:
     id: null
     src: hda
+  ligand_chain: 'B'
 outputs:
 - id: null
   hid: null
-  name: Surface Polar Score filter result
-  file_ext: tabular
+  name: Grid Score Results
+  file_ext: csv
   example: output_id = res['outputs'][0]['id']
-- id: null
-  hid: null
-  name: Density plot of Surface Polar Score
-  file_ext: png
-  example: output_id = res['outputs'][1]['id']
 output_collections: null

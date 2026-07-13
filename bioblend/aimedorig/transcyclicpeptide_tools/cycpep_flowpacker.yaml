@@ -1,0 +1,52 @@
+id: cycpep_flowpacker
+name: FlowPacker Side-Chain Packing
+version: 1.0
+description: null
+inputs:
+- id: input_pdbs
+  type: data
+  name: Backbone PDB files
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: input_fastas
+  type: data
+  name: MPNN FASTA files
+  extensions:
+  - fasta
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: batch_size
+  type: integer
+  name: Batch size
+  optional: false
+  value: 16
+  min: 1
+  max: 32
+  help: null
+- id: binder_chain
+  type: text
+  name: Binder chain ID
+  optional: false
+  value: A
+  help: null
+input_examples:
+  input_pdbs:
+  - id: null
+    src: hda
+  input_fastas:
+  - id: null
+    src: hda
+  batch_size: 16
+  binder_chain: A
+outputs: null
+output_collections:
+- id: null
+  hid: null
+  name: FlowPacker Side-Chain Packing Full-Atom PDBs
+  example: output_id = res['output_collections'][0]['id']

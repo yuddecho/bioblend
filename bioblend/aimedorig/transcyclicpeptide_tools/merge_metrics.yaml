@@ -1,0 +1,25 @@
+id: merge_metrics
+name: Merge Metrics
+version: 1.0
+description: null
+inputs:
+- id: input_csvs
+  type: data
+  name: Input CSV files
+  extensions:
+  - csv
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input_csvs:
+  - id: null
+    src: hda
+outputs:
+- id: null
+  hid: null
+  name: Merge Metrics Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

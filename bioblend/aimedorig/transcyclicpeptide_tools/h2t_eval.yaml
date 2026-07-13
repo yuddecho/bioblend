@@ -1,0 +1,25 @@
+id: h2t_eval
+name: Head-to-Tail Cyclic Peptide Evaluation
+version: 1.0
+description: null
+inputs:
+- id: input_fasta
+  type: data
+  name: Input FASTA
+  extensions:
+  - fasta
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+input_examples:
+  input_fasta:
+    id: null
+    src: hda
+outputs:
+- id: null
+  hid: null
+  name: Head-to-Tail Cyclic Peptide Evaluation Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

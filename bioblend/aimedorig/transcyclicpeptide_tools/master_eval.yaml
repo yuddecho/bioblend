@@ -1,0 +1,45 @@
+id: master_eval
+name: Peptide Sequence Evaluation
+version: 1.0
+description: null
+inputs:
+- id: input_fasta
+  type: data
+  name: Input FASTA
+  extensions:
+  - fasta
+  multiple: false
+  optional: false
+  src: hda
+  help: null
+- id: mode
+  type: select
+  name: Peptide type
+  optional: false
+  value: auto
+  help: null
+  options:
+  - ['linear', 'Linear peptide', false]
+  - ['head_to_tail', 'Head-to-tail cyclic peptide', false]
+  - ['disulfide', 'Disulfide-cyclized peptide', false]
+  - ['auto', 'Auto-detect', true]
+- id: summary_output
+  type: boolean
+  name: Generate summary output
+  optional: true
+  value: ''
+  truevalue: 'true'
+  falsevalue: ''
+  help: null
+input_examples:
+  input_fasta:
+    id: null
+    src: hda
+  mode: auto
+outputs:
+- id: null
+  hid: null
+  name: Peptide Sequence Evaluation Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

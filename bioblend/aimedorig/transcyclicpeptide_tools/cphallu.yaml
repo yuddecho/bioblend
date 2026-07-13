@@ -1,0 +1,123 @@
+id: cphallu
+name: CPHallu
+version: 1.0
+description: Cyclic Peptide Hallucination
+inputs:
+- id: input_file
+  type: data
+  name: Target PDB file
+  extensions:
+  - pdb
+  multiple: false
+  optional: false
+  src: hda
+- id: binder_name
+  type: text
+  name: Binder name
+  optional: false
+- id: chains
+  type: text
+  name: Target chain(s)
+  optional: false
+  value: A
+- id: hotspot
+  type: text
+  name: Hotspot residues
+  optional: false
+  value: A
+- id: min_length
+  type: integer
+  name: Minimum binder length
+  optional: false
+  value: 55
+  min: 1
+  max: 200
+- id: max_length
+  type: integer
+  name: Maximum binder length
+  optional: false
+  value: 65
+  min: 1
+  max: 200
+- id: num_designs
+  type: integer
+  name: Number of final designs
+  optional: false
+  value: 10
+  min: 1
+  max: 1000
+- id: max_traj
+  type: text
+  name: Max trajectories
+  optional: false
+  value: 'false'
+- id: enable_mpnn
+  type: select
+  name: Enable ProteinMPNN refinement
+  optional: false
+  value: 'true'
+  options:
+  - ['Yes (recommended)', 'true', true]
+  - ['No (trajectory only)', 'false', false]
+- id: filter_preset
+  type: select
+  name: Filter preset
+  optional: false
+  value: 'no_filters.json'
+  options:
+  - ['Default (standard protein)', 'default_filters.json', false]
+  - ['Relaxed', 'relaxed_filters.json', false]
+  - ['Peptide (strict)', 'peptide_filters.json', false]
+  - ['Peptide Relaxed', 'peptide_relaxed_filters.json', false]
+  - ['No filters (keep all)', 'no_filters.json', true]
+- id: helicity
+  type: float
+  name: Helicity bias
+  optional: true
+  value: -0.3
+  min: -3.0
+  max: 1.0
+- id: omit_aas
+  type: text
+  name: Amino acids to exclude
+  optional: true
+  value: C
+- id: recycles
+  type: integer
+  name: AF2 validation recycles
+  optional: true
+  value: 3
+  min: 1
+  max: 20
+input_examples:
+  input_file:
+    id: null
+    src: hda
+  binder_name: PDL1
+  chains: A
+  hotspot: A
+  min_length: 55
+  max_length: 65
+  num_designs: 10
+  max_traj: 'false'
+  enable_mpnn: 'true'
+  filter_preset: 'no_filters.json'
+  helicity: -0.3
+  omit_aas: C
+  recycles: 3
+outputs:
+- id: null
+  hid: null
+  name: CPHallu Final Design Statistics
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+- id: null
+  hid: null
+  name: CPHallu Trajectory Statistics
+  file_ext: csv
+  example: output_id = res['outputs'][1]['id']
+output_collections:
+- id: null
+  hid: null
+  name: CPHallu Accepted Designs (PDB)
+  example: output_id = res['output_collections'][0]['id']

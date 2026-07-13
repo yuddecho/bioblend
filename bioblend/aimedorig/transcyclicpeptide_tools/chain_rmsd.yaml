@@ -1,0 +1,51 @@
+id: chain_rmsd
+name: Chain RMSD
+version: 1.0
+description: null
+inputs:
+- id: input_dir1
+  type: data
+  name: Input PDBs (dir 1)
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: input_dir2
+  type: data
+  name: Input PDBs (dir 2)
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: chain
+  type: text
+  name: Chain
+  optional: false
+  value: 'B'
+  help: null
+- id: suffix2
+  type: text
+  name: Suffix for dir 2
+  optional: false
+  value: '_relax'
+  help: null
+input_examples:
+  input_dir1:
+  - id: null
+    src: hda
+  input_dir2:
+  - id: null
+    src: hda
+  chain: 'B'
+  suffix2: '_relax'
+outputs:
+- id: null
+  hid: null
+  name: Chain RMSD Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

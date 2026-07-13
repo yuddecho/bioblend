@@ -1,0 +1,74 @@
+id: stab_linearpep
+name: Linear Peptide Stability
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: chain
+  type: text
+  name: Peptide chain
+  optional: false
+  value: B
+  help: null
+- id: n_decoys
+  type: integer
+  name: Number of decoys
+  optional: false
+  value: 200
+  min: 10
+  max: 2000
+  help: null
+- id: n_steps
+  type: integer
+  name: MC steps
+  optional: false
+  value: 1500
+  min: 100
+  max: 10000
+  help: null
+- id: boundlike_rmsd
+  type: float
+  name: Bound-like RMSD (Å)
+  optional: false
+  value: 2.0
+  min: 0.5
+  max: 10.0
+  help: null
+- id: cluster_cutoff
+  type: float
+  name: Cluster cutoff (Å)
+  optional: false
+  value: 1.5
+  min: 0.5
+  max: 5.0
+  help: null
+- id: extra_opts
+  type: text
+  name: Extra Rosetta options
+  optional: true
+  value: ''
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  chain: B
+  n_decoys: 200
+  n_steps: 1500
+  boundlike_rmsd: 2.0
+  cluster_cutoff: 1.5
+outputs:
+- id: null
+  hid: null
+  name: Linear Peptide Stability Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null

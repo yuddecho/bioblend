@@ -1,5 +1,5 @@
-id: rg_desity
-name: Density of Rg
+id: global_rmsd_density
+name: Density of Global RMSD
 version: 1.0
 description: null
 inputs:
@@ -12,7 +12,7 @@ inputs:
   optional: false
   src: hda
   help: null
-- id: reference_pdb
+- id: r
   type: data
   name: Reference PDB file
   extensions:
@@ -25,23 +25,18 @@ input_examples:
   input_files:
   - id: null
     src: hda
-  reference_pdb:
+  r:
     id: null
     src: hda
 outputs:
 - id: null
   hid: null
-  name: Rg filter result
+  name: Global RMSD Score filter result
   file_ext: tabular
   example: output_id = res['outputs'][0]['id']
 - id: null
   hid: null
-  name: Density plot of Atoms
+  name: Density plot of Surface ESM_RMSD
   file_ext: png
   example: output_id = res['outputs'][1]['id']
-- id: null
-  hid: null
-  name: Density plot of CA
-  file_ext: png
-  example: output_id = res['outputs'][2]['id']
 output_collections: null

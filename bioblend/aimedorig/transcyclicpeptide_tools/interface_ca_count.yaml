@@ -1,0 +1,41 @@
+id: interface_ca_count
+name: Interface CA Residue Count
+version: 1.0
+description: null
+inputs:
+- id: input_pdb
+  type: data
+  name: Input PDB
+  extensions:
+  - pdb
+  multiple: true
+  optional: false
+  src: hda
+  help: null
+- id: ligand_chain
+  type: text
+  name: Ligand chain
+  optional: false
+  value: B
+  help: null
+- id: distance
+  type: float
+  name: Distance cutoff (A)
+  optional: false
+  value: 10.0
+  min: 4.0
+  max: 20.0
+  help: null
+input_examples:
+  input_pdb:
+  - id: null
+    src: hda
+  ligand_chain: B
+  distance: '10.0'
+outputs:
+- id: null
+  hid: null
+  name: Interface CA Residue Count Results
+  file_ext: csv
+  example: output_id = res['outputs'][0]['id']
+output_collections: null
