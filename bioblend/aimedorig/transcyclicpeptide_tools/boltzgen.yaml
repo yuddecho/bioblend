@@ -23,7 +23,7 @@ inputs:
   value: 8..16
 - id: cyclize_peptide
   type: select
-  name: Cyclize peptide
+  name: Cyclize
   optional: false
   value: 'true'
   options:
@@ -31,7 +31,7 @@ inputs:
   - ['False', 'false', false]
 - id: cif_targets
   type: repeat
-  name: Target chains
+  name: Target chain
   inputs:
   - id: chain
     type: text
@@ -53,9 +53,9 @@ inputs:
   type: select
   name: Design protocol
   optional: false
-  value: 'protein-anything'
+  value: antibody-anything
   options:
-  - ['protein-anything', 'protein-anything', false]
+  - [protein-anything, protein-anything, false]
   - ['peptide-anything', 'peptide-anything', false]
   - ['protein-small_molecule', 'protein-small_molecule', false]
   - ['antibody-anything', 'antibody-anything', false]
@@ -64,7 +64,7 @@ inputs:
   type: text
   name: Number of intermediate designs
   optional: false
-  value: '10'
+  value: '2'
 - id: budget
   type: text
   name: Final design budget
@@ -81,8 +81,8 @@ input_examples:
   cif_targets_1|chain: C
   binding_types_0|id: A
   binding_types_0|binding: 12,14,61,63,73,76,77,83,101,104,108
-  protocol: 'protein-anything'
-  num_designs: '10'
+  protocol: antibody-anything
+  num_designs: '2'
   budget: '2'
 outputs: null
 output_collections:

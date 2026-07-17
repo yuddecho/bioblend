@@ -60,7 +60,14 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_file']['id'] = self.data['input.pdb'][0]['id']
+        tool_input['input_file']['id'] = self.data['PDL1.pdb'][0]['id']
+        tool_input['binder_name'] = 'PDL1'
+        tool_input['chains'] = 'A'
+        tool_input['hotspot'] = 'A'
+        tool_input['min_length'] = 55
+        tool_input['max_length'] = 65
+        tool_input['num_designs'] = 2
+        tool_input['max_traj'] = 'false'
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -76,7 +83,8 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_file']['id'] = self.data['input.pdb'][0]['id']
+        tool_input['input_file']['id'] = self.data['7zkr_GABARAP.pdb'][0]['id']
+        tool_input['specified_hotspots'] = 'A51,A52,A50,A48,A62,A65'
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -96,7 +104,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['antibody_protein']['id'] = self.data['input.cif'][0]['id']
+        tool_input['antibody_protein']['id'] = self.data['8jjs.cif'][0]['id']
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -112,7 +120,9 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_file']['id'] = self.data['input.pdb'][0]['id']
+        tool_input['input_file']['id'] = self.data['PDL1_truncated.pdb'][0]['id']
+        tool_input['specified_hotspots'] = 'B/20-133'
+        tool_input['chains_0|if_cyc'] = 'false'
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -128,7 +138,8 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb']['id'] = self.data['input.pdb'][0]['id']
+        tool_input['input_pdb']['id'] = self.data['7zkr_GABARAP.pdb'][0]['id']
+        tool_input['hotspot'] = 'A51,A52,A50,A48,A62,A65'
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -144,7 +155,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb']['id'] = self.data['input.pdb'][0]['id']
+        tool_input['input_pdb']['id'] = self.data['7zkr_GABARAP.pdb'][0]['id']
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -164,7 +175,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_fasta']['id'] = self.data['input.fasta'][0]['id']
+        tool_input['input_fasta']['id'] = self.data['peptides_chainB.fasta'][0]['id']
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -180,7 +191,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_fasta']['id'] = self.data['input.fasta'][0]['id']
+        tool_input['input_fasta']['id'] = self.data['peptides_chainB.fasta'][0]['id']
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -196,7 +207,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_fasta']['id'] = self.data['input.fasta'][0]['id']
+        tool_input['input_fasta']['id'] = self.data['peptides_chainB.fasta'][0]['id']
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -212,7 +223,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_fasta']['id'] = self.data['input.fasta'][0]['id']
+        tool_input['input_fasta']['id'] = self.data['peptides_chainB.fasta'][0]['id']
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -232,7 +243,8 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdbs'] = [{'id': self.data['7zkr_GABARAP.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['chain_map'] = 'A:B,B:A'
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -248,7 +260,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdbs'] = [{'id': self.data['7zkr_GABARAP.pdb'][0]['id'], 'src': 'hda'}]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -264,7 +276,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdbs'] = [{'id': self.data['7zkr_GABARAP.pdb'][0]['id'], 'src': 'hda'}]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -280,7 +292,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdbs'] = [{'id': self.data['7zkr_GABARAP.pdb'][0]['id'], 'src': 'hda'}]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -296,7 +308,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdbs'] = [{'id': self.data['7zkr_GABARAP.pdb'][0]['id'], 'src': 'hda'}]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -316,7 +328,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -332,7 +353,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -348,7 +378,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -364,7 +403,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -380,7 +428,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -396,7 +453,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -412,7 +478,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -428,7 +503,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -444,7 +528,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -460,8 +553,26 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_dir1'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
-        tool_input['input_dir2'] = [{'id': self.data['input_relax.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_dir1'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
+        tool_input['input_dir2'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -477,7 +588,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -493,7 +613,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
         tool_input['native_pdb']['id'] = self.data['native.pdb'][0]['id']
 
         print(f'tool_input: {tool_input}')
@@ -510,7 +639,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
         tool_input['native_pdb']['id'] = self.data['native.pdb'][0]['id']
 
         print(f'tool_input: {tool_input}')
@@ -527,7 +665,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -543,7 +690,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -563,7 +719,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -579,7 +744,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -599,7 +773,16 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdb'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdb'] = [
+            {'id': self.data['rank0003_klk2_cycpep_disulfide_0259_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0004_klk2_cycpep_disulfide_0265_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0006_klk2_cycpep_disulfide_1281_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0007_klk2_cycpep_disulfide_0056_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0008_klk2_cycpep_disulfide_1149_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0009_klk2_cycpep_disulfide_1696_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0011_klk2_cycpep_disulfide_1146_processed.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['rank0014_klk2_cycpep_disulfide_1882_processed.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -615,7 +798,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdbs'] = [{'id': self.data['7zkr_GABARAP.pdb'][0]['id'], 'src': 'hda'}]
         tool_input['native_pdb']['id'] = self.data['native.pdb'][0]['id']
 
         print(f'tool_input: {tool_input}')
@@ -651,7 +834,10 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdbs'] = [
+            {'id': self.data['7zkr_GABARAP_1.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_15.pdb'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -667,8 +853,14 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
-        tool_input['input_fastas'] = [{'id': self.data['input.fasta'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdbs'] = [
+            {'id': self.data['7zkr_GABARAP_1.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_15.pdb'][0]['id'], 'src': 'hda'}
+        ]
+        tool_input['input_fastas'] = [
+            {'id': self.data['7zkr_GABARAP_1.fasta'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_15.fasta'][0]['id'], 'src': 'hda'}
+        ]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -684,7 +876,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdbs'] = [{'id': self.data['7zkr_GABARAP.pdb'][0]['id'], 'src': 'hda'}]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -700,9 +892,23 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['metrics_csv']['id'] = self.data['metrics.csv'][0]['id']
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
-        tool_input['input_fasta'] = [{'id': self.data['input.fasta'][0]['id'], 'src': 'hda'}]
+        tool_input['metrics_csv']['id'] = self.data['AF3_Scoring.csv'][0]['id']
+        tool_input['input_pdbs'] = [
+            {'id': self.data['7zkr_GABARAP_1_0.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_1_1.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_1_2.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_1_3.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_1_4.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_1_5.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_15_0.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_15_1.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_15_2.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_15_3.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_15_4.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_15_5.pdb'][0]['id'], 'src': 'hda'},
+            {'id': self.data['7zkr_GABARAP_15_6.pdb'][0]['id'], 'src': 'hda'},
+        ]
+        del tool_input['input_fasta']
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -722,7 +928,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_files'] = [{'id': self.data['input.cif'][0]['id'], 'src': 'hda'}]
+        tool_input['input_files'] = [{'id': self.data['8jjs.cif'][0]['id'], 'src': 'hda'}]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -802,7 +1008,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
         print(f'input_examples: {input_examples}')
 
         tool_input = input_examples
-        tool_input['input_csv']['id'] = self.data['metrics.csv'][0]['id']
+        tool_input['input_csv']['id'] = self.data['AF3_Scoring.csv'][0]['id']
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
@@ -819,7 +1025,7 @@ class TestTransCyclicPeptide(unittest.TestCase):
 
         tool_input = input_examples
         tool_input['metrics_csv']['id'] = self.data['metrics.csv'][0]['id']
-        tool_input['input_pdbs'] = [{'id': self.data['input.pdb'][0]['id'], 'src': 'hda'}]
+        tool_input['input_pdbs'] = [{'id': self.data['7zkr_GABARAP.pdb'][0]['id'], 'src': 'hda'}]
 
         print(f'tool_input: {tool_input}')
         tool_output = self._run_tool(tool, tool_input)
